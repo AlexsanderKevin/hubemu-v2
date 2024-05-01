@@ -16,8 +16,13 @@ export default function ListRecents () {
         Recentes
       </h1>
       <div 
+        id='list-recents'
         data-navigation-index="0" 
         data-orientation="horizontal" 
+        data-up-container="list-recents"
+        data-down-container="list-favorites"
+        data-left-container="navigation-menu"
+        data-right-container="list-recents"
         className={`${styles.listRecents} navigation-container horizontal`}
       >
         <button className='navigation-item'>item</button>

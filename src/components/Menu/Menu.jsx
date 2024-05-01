@@ -14,21 +14,37 @@ export default function Menu() {
       <div>
         <h1 className={styles.title}><List/> Menu</h1>
 
-        <div className={`${styles.linkGroup} navigation-container vertical`} data-navigation-index="10" data-orientation="vertical">
+        <div 
+          id='navigation-menu'
+          className={`${styles.linkGroup} navigation-container vertical`} 
+          data-orientation="vertical"
+          data-up-container="navigation-menu"
+          data-down-container="list-quick-start"
+          data-left-container="navigation-menu"
+          data-right-container="list-recents"
+        >
           <button className={`${styles.navLink} active navigation-item`}><House weight='bold' /> Home</button>
-          <button className={styles.navLink}><SquaresFour weight='bold' /> Biblioteca</button>
-          <button className={styles.navLink}><GearSix weight='bold' /> Configurações</button>
+          <button className={`${styles.navLink} navigation-item`}><SquaresFour weight='bold' /> Biblioteca</button>
+          <button className={`${styles.navLink} navigation-item`}><GearSix weight='bold' /> Configurações</button>
         </div>
       </div>
 
       <div>
         <h1 className={styles.title}><Play/> Inicio Rapido</h1>
 
-        <div className={`navigation-container vertical`} data-navigation-index="11" data-orientation="vertical">
+        <div 
+          id='list-quick-start'
+          className={`navigation-container vertical`} 
+          data-orientation="vertical"
+          data-up-container="navigation-menu"
+          data-down-container="list-quick-start"
+          data-left-container="list-quick-start"
+          data-right-container="list-favorites"
+        >
           {list.map(( item, index ) => (
             <button 
               key={ index }
-              className={`${styles.quickStartBtn}`}
+              className={`${styles.quickStartBtn} navigation-item`}
             >
               { item.name }
             </button>

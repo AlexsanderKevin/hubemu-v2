@@ -21,8 +21,13 @@ export default function ListFavorites () {
       </h1>
 
       <div 
+        id='list-favorites'
         data-navigation-index="1" 
         data-orientation="horizontal" 
+        data-up-container="list-recents"
+        data-down-container="list-favorites"
+        data-left-container="list-quick-start"
+        data-right-container="list-favorites"
         className={`${styles.listFavorites} navigation-container horizontal`}
       >
         {list.map(( item, index ) => (
