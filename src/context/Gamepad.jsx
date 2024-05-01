@@ -5,13 +5,12 @@ export const GamepadContext = createContext()
 
 export const GamepadProvider = ({children}) => {
   const [ connectedGamepad, setConnectedGamepad ] = useState(null)
-  const [ containerIndex, setContainerIndex ] = useState(0)
   const [ activeItemIndex, setActiveItemIndex ] = useState(0)
   const [ orientation, setOrientation ] = useState('horizontal')
   const [ maxItems, setMaxItems ] = useState(0)
-  const [ maxContainers, setMaxContainers ] = useState(0)
   const [ gameLoopOn, setGameLoopOn ] = useState(true)
   const [ gameLoopInterval, setGameLoopInterval ] = useState(null)
+  const [ currentContainerElementId, setCurrentContainerElementId ] = useState("#list-recents")
 
   const handleGamepadConnected = event => {
     setConnectedGamepad(event.gamepad)
@@ -23,18 +22,47 @@ export const GamepadProvider = ({children}) => {
     console.log('Gamepad disconnected.')
   }
 
-  const navigate = (target, direction) => {
-    if (target === 'item' && direction === 'forward') {
-      setActiveItemIndex(item => (item < maxItems - 1 ? item + 1 : item) )
+  const toNextItem = (nextContainer, nextItem) => {
+    if (activeItemIndex < maxItems -1) setActiveItemIndex(item => item + 1)
+    else changeContainer(nextContainer, nextItem)
+  }
+
+  const toPrevItem = (prevContainer, nextItem) => {
+    if (activeItemIndex > 0)  setActiveItemIndex(item => item - 1)
+    else changeContainer(prevContainer, nextItem)
+  }
+
+  const changeContainer = (nextContainerId, nextItem) => {
+    if (currentContainerElementId !== nextContainerId){
+      setCurrentContainerElementId(nextContainerId)
+
+      if (nextItem === 'first') {
+        setActiveItemIndex(0)
+      }
+      else if (nextItem === 'last') {
+        const lastItemOfNextContainer = document.querySelector(nextContainerId).querySelectorAll('.navigation-item').length
+        setActiveItemIndex(lastItemOfNextContainer)
+      }
     }
-    else if (target === 'item' && direction === 'backward') {
-      setActiveItemIndex(item => (item > 0 ? item - 1 : item) )
-    }
-    if (target === 'container' && direction === 'forward') {
-      setContainerIndex(item => (item < maxContainers - 1 ? item + 1 : item) )
-    }
-    else if (target === 'container' && direction === 'backward') {
-      setContainerIndex(item => (item > 0 ? item - 1 : item) )
+  }
+
+  const navigate = (direction) => {
+    const nextContainerElementId = "#" + document
+      .querySelector(currentContainerElementId)
+      .getAttribute(`data-${direction}-container`)
+
+    switch (orientation) {
+      case 'horizontal': 
+        if (direction === 'up' || direction === 'down') changeContainer(nextContainerElementId)
+        else if (direction === 'right') toNextItem(nextContainerElementId)
+        else if (direction === 'left') toPrevItem(nextContainerElementId)
+        break
+      case 'vertical':
+        if (direction === 'right' || direction === 'left') changeContainer(nextContainerElementId, 'first')
+        else if (direction === 'down') toNextItem(nextContainerElementId, 'first')
+        else if (direction === 'up') toPrevItem(nextContainerElementId, 'last')
+        break
+      default: return null
     }
   }
 
@@ -42,18 +70,10 @@ export const GamepadProvider = ({children}) => {
   const handle_B = () => console.log('B pressed')
   const handle_X = () => console.log('X pressed')
   const handle_Y = () => console.log('Y pressed')
-  const handle_UP = () => {
-    if (orientation === 'horizontal') navigate('container', 'backward')
-  }
-  const handle_DOWN = () => {
-    if (orientation === 'horizontal') navigate('container', 'forward')
-  }
-  const handle_LEFT = () => {
-    if (orientation === 'horizontal') navigate('item', 'backward')
-  }
-  const handle_RIGHT = () => {
-    if (orientation === 'horizontal') navigate('item', 'forward')
-  }
+  const handle_UP = () => navigate('up')
+  const handle_DOWN = () => navigate('down')
+  const handle_LEFT = () => navigate('left')
+  const handle_RIGHT = () => navigate('right')
 
   const handleAction = pressedButtons => {
     if (pressedButtons.includes('A')) handle_A()
@@ -67,11 +87,10 @@ export const GamepadProvider = ({children}) => {
   }
 
   useEffect(() => {
-    const container = document.querySelector(`[data-navigation-index="${containerIndex}"]`)
+    const container = document.querySelector(currentContainerElementId)
     const newMaxItems = container?.querySelectorAll('.navigation-item').length
 
     setMaxItems(newMaxItems)
-    setMaxContainers(document.querySelectorAll('.navigation-container').length)
     setOrientation(container?.getAttribute('data-orientation'))
 
     let item
@@ -84,7 +103,7 @@ export const GamepadProvider = ({children}) => {
     }
     item?.focus()
 
-  }, [ containerIndex, activeItemIndex ])
+  }, [ activeItemIndex, currentContainerElementId ])
 
   useEffect(() => {
     window.addEventListener('gamepadconnected', handleGamepadConnected)
