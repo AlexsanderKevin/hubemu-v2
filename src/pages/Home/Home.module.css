@@ -1,0 +1,20 @@
+.home {
+  margin-top: 3.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.title {
+  width: 100%;
+  font-size: 2rem;
+  text-align: left;
+  display: flex;
+  justify-content: start;
+  font-weight: normal;
+  gap: .7rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}

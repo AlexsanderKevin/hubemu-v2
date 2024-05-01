@@ -1,0 +1,32 @@
+.listRecents {
+  gap: 1.5rem;
+  width: 90rem;
+  margin-bottom: 5rem;
+}
+
+.listRecents button {
+  height: 17rem;
+  min-width: 17rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1.3rem;
+  transition: .2s;
+  position: relative;
+}
+
+.playLabel {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: none;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+}
+
+button:focus .playLabel {
+  display: flex;
+}
+
+.listRecents button:focus {
+  min-width: 22rem;
+}

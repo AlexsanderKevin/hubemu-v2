@@ -1,0 +1,50 @@
+.bg {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  left: 0;
+}
+
+.square {
+  height: 2000px;
+  width: 2000px;
+  border-radius: 600px;
+  background-color: #140038;
+  opacity: .3;
+  position: absolute;
+  top: 97vh;
+}
+
+.square:nth-of-type(1) {
+  left: -50rem;
+  transform: rotate(-70deg);
+  animation: spin 30s linear infinite;
+}
+.square:nth-of-type(2) {
+  animation: spin 35s linear infinite;
+}
+.square:nth-of-type(3) {
+  left: 50rem;
+  transform: rotate(50deg);
+  animation: spin 40s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0);}
+  to { transform: rotate(360deg);}
+}
+
+.saturnSvg {
+  position: absolute;
+  left: 30rem;
+  top: 5rem;
+}
+
+.ilustrationGalaxy{
+  position: absolute;
+  right: 0rem;
+  top: 0rem;
+}

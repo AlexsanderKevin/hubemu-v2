@@ -1,0 +1,55 @@
+.menu {
+  background-color: rgba(0, 0, 0, 0.350);
+  padding: 1.5rem;
+  height: 95dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  margin-bottom: 3rem;
+  margin-top: 0;
+  font-size: 1.7rem;
+  width: 100%;
+  display: flex;
+  font-weight: normal;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLink {
+  display: flex;
+  font-weight: normal;
+  justify-content: start;
+  align-items: center;
+  gap: 1.7rem;
+  padding: 1rem 1.7rem;
+  min-width: 15rem;
+  font-size: 1.5rem;
+  background: none;
+}
+
+.quickStartBtn {
+  display: flex;
+  font-weight: normal;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.7rem;
+  min-width: 15rem;
+  font-size: 1.5rem;
+  height: 5rem;
+  background: hsla(0, 0%, 0%, 0.25);
+}
+
+.navLink:global(.active) {
+  background: hsla(0, 0%, 0%, 0.500);
+}
+
+.navLink:focus {
+}
+
+.linkGroup {
+  margin-bottom: 4rem;
+}

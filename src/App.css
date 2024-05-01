@@ -1,0 +1,37 @@
+#root {
+  max-width: 1280px;
+  margin: 0;
+  text-align: center;
+}
+
+.navigation-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+
+.navigation-container.horizontal {
+  flex-direction: row;
+}
+
+.navigation-container.vertical {
+  flex-direction: column;
+}
+
+.navigation-item:focus {
+  border: solid 3px #4ADE80;
+}
+
+.navigation-item:active {
+  scale: .9;
+  transition: .2s;
+}
+
+.body {
+  display: flex;
+}
+
+.body main {
+  flex: 1;
+  padding: 2rem;
+}
