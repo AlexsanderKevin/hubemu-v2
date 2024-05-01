@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
-const { syncDatabase } = require('./database')
+const { syncDatabase } = require('./database/database')
 const { initRoutes } = require('./routes/routes')
 const url = require('url');
 
@@ -15,12 +15,16 @@ function createWindow() {
   
   syncDatabase()
   initRoutes()
-  win.loadURL(url.format({
-        pathname: path.join(__dirname, '../build/index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
-  //win.loadURL('http://localhost:3000')
+
+  // Production mode only
+  // win.loadURL(url.format({
+  //       pathname: path.join(__dirname, '../build/index.html'),
+  //       protocol: 'file:',
+  //       slashes: true
+  //   }));
+
+  // Development mode only
+  win.loadURL('http://localhost:3000')
 }
 
 app.whenReady().then(createWindow)

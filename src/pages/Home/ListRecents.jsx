@@ -7,6 +7,10 @@ import { ClockCountdown, Play } from '@phosphor-icons/react'
 export default function ListRecents () {
   const list  = [
     {name: "Kingdom Hearts", gamePath: "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso", dirPath: "D:/Emulador/Emuladores/PS2 - PCSX2", exeCommand: "./pcsx2.exe --nogui --fullscreen"},
+    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"}
   ]
 
   return (
@@ -25,11 +29,6 @@ export default function ListRecents () {
         data-right-container="list-recents"
         className={`${styles.listRecents} navigation-container horizontal`}
       >
-        <button className='navigation-item'>item</button>
-        <button className='navigation-item'>item</button>
-        <button className='navigation-item'>item</button>
-        <button className='navigation-item'>item</button>
-
         {list.map(( item, index ) => (
           <button 
             key={ index }

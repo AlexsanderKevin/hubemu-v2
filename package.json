@@ -16,7 +16,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run react-start\" \"npm run electron\"",
+    "start": "concurrently \"set BROWSER=none&& npm run react-start\" \"npm run electron\"",
     "react": "npm run react-start",
     "electron": "electron ./electron/main.js",
     "react-start": "react-scripts start",
