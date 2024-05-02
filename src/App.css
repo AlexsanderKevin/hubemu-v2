@@ -19,7 +19,7 @@
 }
 
 .navigation-item:focus {
-  border: solid 3px #4ADE80;
+  border: solid 3px white;
 }
 
 .navigation-item:active {
