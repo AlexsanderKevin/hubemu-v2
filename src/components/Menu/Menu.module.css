@@ -8,15 +8,18 @@
 }
 
 .title {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   margin-top: 0;
   font-size: 1.7rem;
+  font-weight: bold;
   width: 100%;
   display: flex;
   font-weight: normal;
   align-items: center;
   gap: 1rem;
-  color: white;
+  color: rgba(255, 255, 255, 1);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .navLink {
@@ -33,14 +36,14 @@
 
 .quickStartBtn {
   display: flex;
+  flex-direction: column;
   font-weight: normal;
-  justify-content: start;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.7rem;
+  justify-content: center;
+  align-items: start;
+  gap: .3rem;
+  padding: .5rem 1.5rem 1rem 1.5rem;
   min-width: 15rem;
   font-size: 1.5rem;
-  height: 5rem;
   background: hsla(0, 0%, 0%, 0.25);
 }
 
@@ -53,4 +56,18 @@
 
 .linkGroup {
   margin-bottom: 4rem;
+}
+
+.platformTotalGames{
+  font-size: .9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.morePlatformsLink {
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
 }

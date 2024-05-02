@@ -1,12 +1,12 @@
 import { House, GearSix, SquaresFour } from '@phosphor-icons/react/dist/ssr'
 import styles from './Menu.module.css'
-import { List, Play } from '@phosphor-icons/react'
+import { ArrowRight, Joystick, List } from '@phosphor-icons/react'
 
 export default function Menu() {
   const list  = [
-    {name: "Kingdom Hearts", gamePath: "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso", dirPath: "D:/Emulador/Emuladores/PS2 - PCSX2", exeCommand: "./pcsx2.exe --nogui --fullscreen"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+    {id: 0, name: "Play Station 2", totalGames: 29},
+    {id: 0, name: "GBA", totalGames: 15},
+    {id: 0, name: "Nintendo Switch", totalGames: 30},
   ]
 
   return (
@@ -30,7 +30,7 @@ export default function Menu() {
       </div>
 
       <div>
-        <h1 className={styles.title}><Play/> Inicio Rapido</h1>
+        <h1 className={styles.title}><Joystick/> Plataformas</h1>
 
         <div 
           id='list-quick-start'
@@ -46,9 +46,14 @@ export default function Menu() {
               key={ index }
               className={`${styles.quickStartBtn} navigation-item`}
             >
-              { item.name }
+              <span className={`${styles.platformName}`}>{ item.name }</span>
+              <span className={`${styles.platformTotalGames}`}>{ item.totalGames } Jogos</span>
             </button>
           ))}
+          <button className={`${styles.morePlatformsLink} navigation-item`}>
+            Mais
+            <ArrowRight weight='bold'/>
+          </button>
         </div>
       </div>
     </aside>
