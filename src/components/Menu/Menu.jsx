@@ -1,6 +1,6 @@
 import { House, GearSix, SquaresFour } from '@phosphor-icons/react/dist/ssr'
 import styles from './Menu.module.css'
-import { ArrowRight, Joystick, List } from '@phosphor-icons/react'
+import { ArrowRight, GameController, Joystick, List } from '@phosphor-icons/react'
 
 export default function Menu() {
   const list  = [
@@ -48,6 +48,7 @@ export default function Menu() {
             >
               <span className={`${styles.platformName}`}>{ item.name }</span>
               <span className={`${styles.platformTotalGames}`}>{ item.totalGames } Jogos</span>
+              <GameController/>
             </button>
           ))}
           <button className={`${styles.morePlatformsLink} navigation-item`}>
