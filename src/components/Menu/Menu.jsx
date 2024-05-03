@@ -23,9 +23,21 @@ export default function Menu() {
           data-left-container="navigation-menu"
           data-right-container="list-recents"
         >
-          <button className={`${styles.navLink} active navigation-item`}><House weight='bold' /> Home</button>
-          <button className={`${styles.navLink} navigation-item`}><SquaresFour weight='bold' /> Biblioteca</button>
-          <button className={`${styles.navLink} navigation-item`}><GearSix weight='bold' /> Configurações</button>
+          <button className={`${styles.navLink} active navigation-item`}>
+            <House weight='bold' /> 
+            <House weight='bold' /> 
+            Home
+          </button>
+          <button className={`${styles.navLink} navigation-item`}>
+            <SquaresFour weight='bold' /> 
+            <SquaresFour weight='bold' /> 
+            Biblioteca
+          </button>
+          <button className={`${styles.navLink} navigation-item`}>
+            <GearSix weight='bold' /> 
+            <GearSix weight='bold' /> 
+            Configurações
+          </button>
         </div>
       </div>
 
