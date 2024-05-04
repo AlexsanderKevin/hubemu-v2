@@ -32,6 +32,21 @@
   min-width: 15rem;
   font-size: 1.5rem;
   background: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.navLink .bgIcon {
+  position: absolute;
+  opacity: .1;
+  font-size: 4rem;
+  right: 0rem;
+  bottom: -1rem;
+  display: none;
+}
+
+.navLink:global(.active) .bgIcon {
+  display: flex;
 }
 
 .quickStartBtn {

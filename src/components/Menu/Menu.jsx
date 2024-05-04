@@ -25,17 +25,17 @@ export default function Menu() {
         >
           <button className={`${styles.navLink} active navigation-item`}>
             <House weight='bold' /> 
-            <House weight='bold' /> 
+            <House weight='bold' className={styles.bgIcon} /> 
             Home
           </button>
           <button className={`${styles.navLink} navigation-item`}>
             <SquaresFour weight='bold' /> 
-            <SquaresFour weight='bold' /> 
+            <SquaresFour weight='bold' className={styles.bgIcon} /> 
             Biblioteca
           </button>
           <button className={`${styles.navLink} navigation-item`}>
             <GearSix weight='bold' /> 
-            <GearSix weight='bold' /> 
+            <GearSix weight='bold' className={styles.bgIcon} /> 
             Configurações
           </button>
         </div>
