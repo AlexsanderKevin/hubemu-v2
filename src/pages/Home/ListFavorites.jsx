@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkle, Play } from '@phosphor-icons/react'
+import { Sparkle, Play, Disc } from '@phosphor-icons/react'
 import homeStyles from './Home.module.css'
 import styles from './ListFavorites.module.css'
 
@@ -35,7 +35,8 @@ export default function ListFavorites () {
             className='navigation-item' 
             key={ index }
           >
-            { item.name }
+            <span className={`${styles.nameLabel}`}>{ item.name }</span>
+            <Disc className={`${styles.bgIcon}`}/>
             <span className={styles.playLabel}>
               <Play weight='bold'/>
               Iniciar

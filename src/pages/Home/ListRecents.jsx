@@ -3,6 +3,7 @@ import { playGame } from '../../API/playGame';
 import styles from './ListRecents.module.css'
 import homeStyles from './Home.module.css';
 import { ClockCountdown, Play } from '@phosphor-icons/react'
+import { Disc } from '@phosphor-icons/react/dist/ssr';
 
 export default function ListRecents () {
   const list  = [
@@ -35,7 +36,8 @@ export default function ListRecents () {
             className='navigation-item' 
             onClick={event => playGame(event, item)} 
           >
-            { item.name }
+            <span className={`${styles.nameLabel}`}>{ item.name }</span>
+            <Disc className={`${styles.bgIcon}`}/>
             <span className={ styles.playLabel }>
               <Play weight='bold'/>
               Iniciar
