@@ -1,6 +1,7 @@
 import { House, GearSix, SquaresFour } from '@phosphor-icons/react/dist/ssr'
 import styles from './Menu.module.css'
 import { ArrowRight, GameController, Joystick, List } from '@phosphor-icons/react'
+import { NavLink } from 'react-router-dom'
 
 export default function Menu() {
   const list  = [
@@ -23,21 +24,30 @@ export default function Menu() {
           data-left-container="navigation-menu"
           data-right-container="list-recents"
         >
-          <button className={`${styles.navLink} active navigation-item`}>
+          <NavLink 
+            className={`${styles.navLink} navigation-item`}
+            to="/"
+          >
             <House weight='bold' /> 
             <House weight='bold' className={styles.bgIcon} /> 
             Home
-          </button>
-          <button className={`${styles.navLink} navigation-item`}>
+          </NavLink>
+          <NavLink 
+            className={`${styles.navLink} navigation-item`}
+            to="/lib"
+          >
             <SquaresFour weight='bold' /> 
             <SquaresFour weight='bold' className={styles.bgIcon} /> 
             Biblioteca
-          </button>
-          <button className={`${styles.navLink} navigation-item`}>
+          </NavLink>
+          <NavLink 
+            className={`${styles.navLink} navigation-item`}
+            to="/config"
+          >
             <GearSix weight='bold' /> 
             <GearSix weight='bold' className={styles.bgIcon} /> 
             Configurações
-          </button>
+          </NavLink>
         </div>
       </div>
 

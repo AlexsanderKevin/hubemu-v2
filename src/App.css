@@ -35,3 +35,9 @@
   flex: 1;
   padding: 2rem;
 }
+
+.mainContainer {
+  margin-top: 3.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

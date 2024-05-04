@@ -34,6 +34,7 @@
   background: none;
   position: relative;
   overflow: hidden;
+  border-radius: 7px;
 }
 
 .navLink .bgIcon {
