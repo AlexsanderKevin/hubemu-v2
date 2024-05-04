@@ -34,7 +34,7 @@
   background: none;
   position: relative;
   overflow: hidden;
-  border-radius: 7px;
+  border-radius: 8px;
 }
 
 .navLink .bgIcon {
@@ -50,29 +50,6 @@
   display: flex;
 }
 
-.quickStartBtn {
-  display: flex;
-  flex-direction: column;
-  font-weight: normal;
-  justify-content: center;
-  align-items: start;
-  gap: .3rem;
-  padding: .5rem 1.5rem 1rem 1.5rem;
-  min-width: 15rem;
-  font-size: 1.5rem;
-  background: hsla(0, 0%, 0%, 0.25);
-  overflow: hidden;
-  position: relative;
-}
-
-.quickStartBtn svg {
-  position: absolute;
-  right: 0rem;
-  bottom: -2.2rem;
-  font-size: 7rem;
-  opacity: .1;
-}
-
 .navLink:global(.active) {
   background: hsla(0, 0%, 0%, 0.500);
 }
@@ -82,18 +59,4 @@
 
 .linkGroup {
   margin-bottom: 4rem;
-}
-
-.platformTotalGames{
-  font-size: .9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.morePlatformsLink {
-  background: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.2rem;
 }
