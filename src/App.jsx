@@ -35,6 +35,7 @@ function App() {
               <Route path='/lib' element={<Library/>}/>
               <Route path='/config' element={<Config/>}/>
               <Route path='/platforms' element={<Platforms/>}/>
+              <Route path='/platforms/:id' element={<Platforms/>}/>
             </Routes>
           </div>
         </BrowserRouter>
