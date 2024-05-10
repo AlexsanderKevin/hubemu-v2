@@ -35,7 +35,7 @@ button:focus .playLabel {
 
 .bgIcon {
   position: absolute;
-  opacity: .15;
+  opacity: .1;
   z-index: -1;
   font-size: 10rem;
   bottom: -1.5rem;

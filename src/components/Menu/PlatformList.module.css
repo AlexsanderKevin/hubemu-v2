@@ -22,6 +22,7 @@
   background: hsla(0, 0%, 0%, 0.25);
   overflow: hidden;
   position: relative;
+  border-radius: 8px;
 }
 
 .quickStartBtn svg {
@@ -44,6 +45,10 @@
   align-items: center;
   gap: 1rem;
   font-size: 1.2rem;
+  border-radius: 50px;
+  width: 10rem;
+  margin: 0 auto;
+  padding: .5rem;
 }
 
 .addPlatformBtn {

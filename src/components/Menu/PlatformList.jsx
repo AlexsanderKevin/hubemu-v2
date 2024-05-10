@@ -4,10 +4,10 @@ import styles from './PlatformList.module.css'
 import { NavLink } from 'react-router-dom'
 
 export default function PlatformList() {
-  const list  = [
-    // {id: 0, name: "Play Station 2", totalGames: 29},
-    // {id: 0, name: "GBA", totalGames: 15},
-    // {id: 0, name: "Nintendo Switch", totalGames: 30},
+  const platforms  = [
+    {id: 1, name: "Play Station 2", totalGames: 29},
+    {id: 1, name: "GBA", totalGames: 15},
+    {id: 1, name: "Nintendo Switch", totalGames: 30},
   ]
 
   return (
@@ -24,18 +24,19 @@ export default function PlatformList() {
           data-right-container="list-favorites"
         >
 
-          {list.map(( item, index ) => (
-            <button 
+          {platforms.map(( platform, index ) => (
+            <NavLink 
               key={ index }
               className={`${styles.quickStartBtn} navigation-item`}
+              to={`platforms/${platform.id}`}
             >
-              <span className={`${styles.platformName}`}>{ item.name }</span>
-              <span className={`${styles.platformTotalGames}`}>{ item.totalGames } Jogos</span>
+              <span className={`${styles.platformName}`}>{ platform.name }</span>
+              <span className={`${styles.platformTotalGames}`}>{ platform.totalGames } Jogos</span>
               <GameController/>
-            </button>
+            </NavLink>
           ))}
 
-          {list.length > 0 ? (
+          {platforms.length > 0 ? (
 
             <NavLink 
               className={`${styles.morePlatformsLink} navigation-item`}
@@ -49,7 +50,7 @@ export default function PlatformList() {
             <>
               <p className={styles.text}>Você ainda não tem nenhuma plataforma</p>
               <NavLink 
-                className={`${styles.addPlatformBtn} navigation-item`}
+                className={`navigation-item ${styles.addPlatformBtn}`}
                 to="platforms"
               >
                 Adicionar
