@@ -3,8 +3,10 @@ const baseUrl = 'https://api.rawg.io/api/'
 
 
 const rawgController = {
+
   async fetchGameMetadataByName (event, data) {
     try {
+
       const { gameName } = data[0]
       const endpoint = 'games';
       const params = new URLSearchParams({ search: gameName, key: apiKey });
