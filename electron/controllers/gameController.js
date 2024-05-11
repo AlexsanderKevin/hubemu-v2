@@ -1,10 +1,10 @@
-const Game = require('../models/Game.js')
+const GameModel = require('../models/GameModel.js')
 const { exec } = require('child_process')
 
 const gameController = {
   findAll: async ( req, res ) => {
     console.log(`finding all games`)
-    const users = await Game.findAll()
+    const users = await GameModel.findAll()
     return users
   },
 
@@ -44,8 +44,6 @@ const gameController = {
       exec(command, options, (err, stdout, stderr) => {
         if (err) { console.error(err) }
         if (stderr) { console.error(stderr) }
-
-        console.log(`Retorno: ${stdout}`)
 
         return stdout
       })

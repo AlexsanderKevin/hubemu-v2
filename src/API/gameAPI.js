@@ -18,7 +18,7 @@ export const fetchGamesFromDir = async (event, target) => {
   const dirCasa = "D:/Emulador/ROMS/PS2"
   try {
     const games = await window.electron.invoke('fetchGamesFromDir', [{
-      dirPath: dirFatec,
+      dirPath: dirCasa,
       fileExtension: 'iso',
     }])
 
