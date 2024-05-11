@@ -1,3 +1,4 @@
+const GameDirModel = require('../models/GameDirModel.js')
 const GameModel = require('../models/GameModel.js')
 const { exec } = require('child_process')
 
@@ -33,6 +34,11 @@ const gameController = {
     catch (err) { 
       throw new Error(`Error at requesting list of games from directory: ${err.message}`)
     }
+  },
+
+  saveGames: async (event, data) => {
+    const { platformId, dirId, fileExtension } = data[0]
+
   },
 
   playGame: async (event, data) => {

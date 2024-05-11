@@ -26,6 +26,10 @@ const GameModel = database.define('games', {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  isFavorited: {
+    type: Sequelize.BOOLEAN,
+    allowNull: true,
+  },
 })
 
 GameDirModel.hasMany(GameModel, {

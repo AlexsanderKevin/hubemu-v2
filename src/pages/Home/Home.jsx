@@ -3,11 +3,13 @@ import ListFavorites from './ListFavorites';
 import ListRecents from './ListRecents';
 import styles from './Home.module.css'
 import { fetchGameMetadata, fetchGamesFromDir } from '../../API/gameAPI';
+import { saveGameDir } from '../../API/gameDirApi';
 
 export default function Home () {
   useEffect(() => {
-    fetchGamesFromDir()
+    // fetchGamesFromDir()
     fetchGameMetadata()
+    saveGameDir()
   }, [])
   return (
     <>

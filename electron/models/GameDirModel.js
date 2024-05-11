@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const { database } = require('../database/database')
 
-const GameDirModel = database.define('games', {
+const GameDirModel = database.define('gameDirs', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -16,6 +16,10 @@ const GameDirModel = database.define('games', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  supportedFileExtension: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  }
 })
 
 module.exports = GameDirModel

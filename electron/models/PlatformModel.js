@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const { database } = require('../database/database')
 
-const PlatformModel = database.define('games', {
+const PlatformModel = database.define('platforms', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
