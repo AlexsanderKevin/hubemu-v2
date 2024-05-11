@@ -1,0 +1,26 @@
+.modal {
+  width: 100dvw;
+  height: 100dvh;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px hsla(0, 0%, 0%, 0.3);
+}
+
+.modalHeader, .modalBody, .modalFooter {
+  padding: 1rem;
+}
+
+.modalHeader, .modalBody{
+  border-bottom: 1px solid rgb(34, 34, 34);
+}

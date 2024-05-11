@@ -8,6 +8,8 @@ import AnimatedBackground from './components/AnimatedBackground/AnimatedBackgrou
 import Library from './pages/Library/Library'
 import Config from './pages/Config/Config'
 import Platforms from './pages/Platforms/Platforms'
+import Modal from './components/Modal/Modal'
+import { ModalProvider } from './context/ModalContext'
 
 function App() {
   const sendRequest = async event => {
@@ -25,10 +27,12 @@ function App() {
 
   return (
     <GamepadProvider>
+    <ModalProvider>
       <div className='body'>
         <BrowserRouter>
           <Menu/>
           <AnimatedBackground/>
+          <Modal/>
           <div className='mainContainer'>
             <Routes>
               <Route path='/' element={<Home/>}/>
@@ -40,6 +44,7 @@ function App() {
           </div>
         </BrowserRouter>
       </div>
+    </ModalProvider>
     </GamepadProvider>
   )
 }

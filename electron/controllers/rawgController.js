@@ -1,7 +1,6 @@
 const apiKey = '91a95aea7e3d4fdbac33f58060e1fe71'
 const baseUrl = 'https://api.rawg.io/api/'
 
-
 const rawgController = {
 
   async fetchGameMetadataByName (event, data) {
