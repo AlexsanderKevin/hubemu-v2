@@ -54,33 +54,7 @@ const gameController = {
       throw new Error(`Error at playing game: ${err.message}`)
     }
   },
-
-  fetchGameMetadata: async (event, data) => {
-    try {
-      const gameName='minecraft'
-      const apiKey = '91a95aea7e3d4fdbac33f58060e1fe71'
-      // URL base da RAWG API
-      const baseUrl = 'https://api.rawg.io/api/';
-      // Endpoint para buscar informações sobre o jogo pelo nome
-      const endpoint = 'games';
-      // Parâmetros da consulta (nome do jogo)
-      const params = new URLSearchParams({ search: gameName, key: apiKey });
-      // Construa a URL completa da solicitação
-      const url = `${baseUrl}${endpoint}?${params}`;
-      
-      // Faça a solicitação à API usando fetch
-      const response = await fetch(url);
-      const dataResponse = await response.json();
-      console.log(dataResponse)
-
-      // Envia o resultado para o front-end
-      event.sender.send('game-info', dataResponse);
-    } catch (error) {
-      console.error('Erro ao fazer a solicitação:', error);
-      // Se houver um erro, envie uma mensagem de erro para o front-end
-      event.sender.send('game-info-error', error.message);
-    }
-  }
+  
 }
 
 module.exports = gameController

@@ -14,9 +14,11 @@ export const playGame = async ( event, target ) => {
 }
 
 export const fetchGamesFromDir = async (event, target) => {
+  const dirFatec = "C:/Users/1050482123033/Downloads"
+  const dirCasa = "D:/Emulador/ROMS/PS2"
   try {
     const games = await window.electron.invoke('fetchGamesFromDir', [{
-      dirPath: 'D:/Emulador/ROMS/PS2',
+      dirPath: dirFatec,
       fileExtension: 'iso',
     }])
 
@@ -31,8 +33,10 @@ export const fetchGameMetadata = async ( event, target ) => {
   if (event) event.target.disabled = true
 
   try {
-    const metadata = await window.electron.invoke('fetchGameMetadata')
-    console.log(metadata)
+    const metadata = await window.electron.invoke('fetchGameMetadataByName', [{
+      gameName: 'Kingdom Hearts'
+    }])
+    console.log("Metadata: ", metadata)
 
     if (event) event.target.disabled = false
   }

@@ -5,11 +5,9 @@ import styles from './Home.module.css'
 import { fetchGameMetadata, fetchGamesFromDir } from '../../API/gameAPI';
 
 export default function Home () {
-  const [ imgSrc, setImgSrc ] = useState(null)
-
   useEffect(() => {
     fetchGamesFromDir()
-    // fetchGameMetadata()
+    fetchGameMetadata()
   }, [])
   return (
     <>

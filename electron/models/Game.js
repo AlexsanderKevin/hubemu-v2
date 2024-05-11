@@ -6,11 +6,27 @@ const Game = database.define('games', {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
+  },
+  idRawgApi: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
   },
   name: {
     type: Sequelize.STRING,
     allowNull: false,
+  },
+  backgroundImgUrl: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  screenshotImgUrl: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  idPlatform: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
   }
 })
 
