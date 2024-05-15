@@ -1,7 +1,7 @@
 .modal {
   width: 100dvw;
   height: 100dvh;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(40px);
   position: fixed;
   top: 0;
   left: 0;
@@ -12,15 +12,67 @@
 }
 
 .modalContainer {
-  background-color: rgba(0, 0, 0, 0.4);
+  /* background-color: #3a2855; */
+  background-color: #1e0f3d;
   border-radius: 10px;
   box-shadow: 0px 0px 30px hsla(0, 0%, 0%, 0.3);
+  width: 40rem;
 }
 
-.modalHeader, .modalBody, .modalFooter {
-  padding: 1rem;
+.modalHeader {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #a987dc;
+  padding: 1.5rem;
+}
+
+.modalBody {
+  display: flex;
+  padding: 2rem 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modalBody p {
+  opacity: .5;
+  text-align: left;
+}
+
+.modalFooter {
+  padding: 0;
+}
+
+.modalFooter button {
+  width: 50%;
+  padding: 1.5rem;
+  background: none;
+  border-radius: none !important;
+  font-size: 1.2rem;
 }
 
 .modalHeader, .modalBody{
-  border-bottom: 1px solid rgb(34, 34, 34);
+  border-bottom: 1px solid #71569a52;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  gap: .5rem;
+}
+
+.inputContainer label {
+  opacity: .8;
+  font-size: 1.2rem;
+}
+
+.inputContainer input {
+  width: 30rem;
+  border-radius: 10px;
+  padding: 1rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
 }
