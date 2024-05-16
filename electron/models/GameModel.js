@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const { database } = require('../database/database')
 const GameDirModel = require('./GameDirModel')
-const PlatformModel = require('./PlatformModel')
+const EmulatorModel = require('./EmulatorModel')
 
 const GameModel = database.define('games', {
   id: {
@@ -35,8 +35,8 @@ const GameModel = database.define('games', {
 GameDirModel.hasMany(GameModel, {
   foreignKey: 'gameDirId',
 })
-PlatformModel.hasMany(GameModel, {
-  foreignKey: 'platformId',
+EmulatorModel.hasMany(GameModel, {
+  foreignKey: 'emulatorId',
 })
 
 module.exports = GameModel

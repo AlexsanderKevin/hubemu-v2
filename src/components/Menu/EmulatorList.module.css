@@ -1,4 +1,4 @@
-.platformlist {
+.emulatorlist {
 }
 
 .text {
@@ -33,12 +33,12 @@
   opacity: .1;
 }
 
-.platformTotalGames{
+.emulatorTotalGames{
   font-size: .9rem;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.morePlatformsLink {
+.moreEmulatorsLink {
   background: none;
   display: flex;
   justify-content: center;
@@ -51,7 +51,7 @@
   padding: .5rem;
 }
 
-.addPlatformBtn {
+.addEmulatorBtn {
   display: flex;
   font-weight: normal;
   justify-content: center;

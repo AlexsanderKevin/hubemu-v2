@@ -1,10 +1,10 @@
 import { ArrowRight, GameController, Joystick, Plus } from '@phosphor-icons/react'
 import menuStyles from './Menu.module.css'
-import styles from './PlatformList.module.css'
+import styles from './EmulatorList.module.css'
 import { NavLink } from 'react-router-dom'
 
-export default function PlatformList() {
-  const platforms  = [
+export default function EmulatorList() {
+  const emulators  = [
     {id: 1, name: "Play Station 2", totalGames: 29},
     {id: 1, name: "GBA", totalGames: 15},
     {id: 1, name: "Nintendo Switch", totalGames: 30},
@@ -12,7 +12,7 @@ export default function PlatformList() {
 
   return (
       <div>
-        <h1 className={menuStyles.title}><Joystick/> Plataformas</h1>
+        <h1 className={menuStyles.title}><Joystick/>Emuladores</h1>
 
         <div 
           id='list-quick-start'
@@ -24,23 +24,23 @@ export default function PlatformList() {
           data-right-container="list-favorites"
         >
 
-          {platforms.map(( platform, index ) => (
+          {emulators.map(( emulator, index ) => (
             <NavLink 
               key={ index }
               className={`${styles.quickStartBtn} navigation-item`}
-              to={`platforms/${platform.id}`}
+              to={`emulators/${emulator.id}`}
             >
-              <span className={`${styles.platformName}`}>{ platform.name }</span>
-              <span className={`${styles.platformTotalGames}`}>{ platform.totalGames } Jogos</span>
+              <span className={`${styles.emulatorName}`}>{ emulator.name }</span>
+              <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames } Jogos</span>
               <GameController/>
             </NavLink>
           ))}
 
-          {platforms.length > 0 ? (
+          {emulators.length > 0 ? (
 
             <NavLink 
-              className={`${styles.morePlatformsLink} navigation-item`}
-              to="platforms"
+              className={`${styles.moreEmulatorsLink} navigation-item`}
+              to="emulators"
             >
               Mais
               <ArrowRight weight='bold'/>
@@ -50,8 +50,8 @@ export default function PlatformList() {
             <>
               <p className={styles.text}>Você ainda não tem nenhuma plataforma</p>
               <NavLink 
-                className={`navigation-item ${styles.addPlatformBtn}`}
-                to="platforms"
+                className={`navigation-item ${styles.addEmulatorBtn}`}
+                to="emulators"
               >
                 Adicionar
                 <Plus weight='bold'/>

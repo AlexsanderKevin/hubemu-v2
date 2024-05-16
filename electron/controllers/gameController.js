@@ -37,7 +37,7 @@ const gameController = {
   },
 
   saveGames: async (event, data) => {
-    const { platformId, dirId, fileExtension } = data[0]
+    const { emulatorId, dirId, fileExtension } = data[0]
 
   },
 

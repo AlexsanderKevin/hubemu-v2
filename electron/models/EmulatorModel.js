@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const { database } = require('../database/database')
 
-const PlatformModel = database.define('platforms', {
+const EmulatorModel = database.define('emulators', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -17,4 +17,4 @@ const PlatformModel = database.define('platforms', {
   }
 })
 
-module.exports = PlatformModel
+module.exports = EmulatorModel

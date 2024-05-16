@@ -2,7 +2,7 @@ import { House, GearSix, SquaresFour } from '@phosphor-icons/react/dist/ssr'
 import styles from './Menu.module.css'
 import { List } from '@phosphor-icons/react'
 import { NavLink } from 'react-router-dom'
-import PlatformList from './PlatformList'
+import EmulatorList from './EmulatorList'
 
 export default function Menu() {
   return (
@@ -48,7 +48,7 @@ export default function Menu() {
         </div>
       </div>
 
-      <PlatformList/>
+      <EmulatorList/>
     </aside>
   )
 }

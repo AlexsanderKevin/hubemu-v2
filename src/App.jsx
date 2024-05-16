@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AnimatedBackground from './components/AnimatedBackground/AnimatedBackground'
 import Library from './pages/Library/Library'
 import Config from './pages/Config/Config'
-import Platforms from './pages/Platforms/Platforms'
+import Emulators from './pages/Emulators/Emulators'
 import Modal from './components/Modal/Modal'
 import { ModalProvider } from './context/ModalContext'
 
@@ -38,8 +38,8 @@ function App() {
               <Route path='/' element={<Home/>}/>
               <Route path='/lib' element={<Library/>}/>
               <Route path='/config' element={<Config/>}/>
-              <Route path='/platforms' element={<Platforms/>}/>
-              <Route path='/platforms/:id' element={<Platforms/>}/>
+              <Route path='/emulators' element={<Emulators/>}/>
+              <Route path='/emulators/:id' element={<Emulators/>}/>
             </Routes>
           </div>
         </BrowserRouter>
