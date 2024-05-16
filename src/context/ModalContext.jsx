@@ -5,9 +5,17 @@ export const ModalContext = createContext()
 export const ModalProvider = ({children}) => {
   const [ modalIsOpen, setModalIsOpen ] = useState(true)
 
+  const activateModal = component => {
+    setModalIsOpen(true)
+  }
+
+  const deactivateModal = () => {
+    setModalIsOpen(false)
+  }
+
   return (
     <ModalContext.Provider value={{
-      modalIsOpen, setModalIsOpen
+      modalIsOpen, setModalIsOpen, activateModal, deactivateModal
     }}>
       {children}
     </ModalContext.Provider>

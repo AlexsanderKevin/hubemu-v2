@@ -5,6 +5,11 @@ import styles from './Modal.module.css'
 export default function Modal() {
   const { modalIsOpen, setModalIsOpen } = useContext(ModalContext)
 
+  const handleClick = async () => {
+    const file = await window.showDirectoryPicker()
+    console.log(file)
+  }
+
   return ( 
     modalIsOpen ?
 
@@ -20,9 +25,10 @@ export default function Modal() {
               <label htmlFor="directory-input">Caminho do  emulador</label>
               <input type="text" name='directory-input' id='directory-input' required/>
             </div>
+            <button onClick={handleClick}>File explorer</button>
           </div>
           <div className={styles.modalFooter}>
-            <button type='submit'>Voltar</button>
+            <button type='clear'>Voltar</button>
             <button type='submit'>Próximo</button>
           </div>
         </form>
