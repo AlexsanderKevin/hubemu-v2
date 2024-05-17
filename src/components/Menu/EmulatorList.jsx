@@ -1,4 +1,4 @@
-import { ArrowRight, GameController, Joystick, Plus } from '@phosphor-icons/react'
+import { ArrowRight, Folder, GameController, Joystick, Plus, Terminal, TerminalWindow } from '@phosphor-icons/react'
 import menuStyles from './Menu.module.css'
 import styles from './EmulatorList.module.css'
 import { NavLink } from 'react-router-dom'
@@ -40,8 +40,15 @@ export default function EmulatorList() {
                 <span className={`${styles.emulatorName}`}>{ emulator.name }</span>
                 <span className={styles.emulatorPlatform}>{ emulator.platform }</span>
               </div>
-              <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames || '0' } Jogos</span>
-              <GameController/>
+              <div className={styles.emulatorCardFooter}>
+                <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames || '0' } Jogos</span>
+
+                <div className={styles.emulatorErrorIcons}>
+                  { !emulator.dirPath && <Folder weight='bold' />}
+                  { !emulator.exeCommand && <TerminalWindow weight='bold' />}
+                </div>
+              </div>
+              <GameController className={styles.bgSvg}/>
             </NavLink>
           ))}
 

@@ -25,7 +25,7 @@
   border-radius: 8px;
 }
 
-.quickStartBtn svg {
+.quickStartBtn .bgSvg {
   position: absolute;
   right: 0rem;
   bottom: -2.2rem;
@@ -66,11 +66,17 @@
   border-radius: 8px;
 }
 
-.emulatorCardHeader {
+.emulatorCardHeader, .emulatorCardFooter {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
+}
+
+.emulatorErrorIcons {
+  color: rgba(248, 65, 65, 0.854);
+  display: flex;
+  gap: .3rem;
 }
 
 .emulatorPlatform {
