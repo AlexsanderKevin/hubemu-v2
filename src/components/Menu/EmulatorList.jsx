@@ -2,13 +2,19 @@ import { ArrowRight, GameController, Joystick, Plus } from '@phosphor-icons/reac
 import menuStyles from './Menu.module.css'
 import styles from './EmulatorList.module.css'
 import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { findAllEmulators } from '../../API/emulatorAPI'
 
 export default function EmulatorList() {
-  const emulators  = [
-    {id: 1, name: "Play Station 2", totalGames: 29},
-    {id: 1, name: "GBA", totalGames: 15},
-    {id: 1, name: "Nintendo Switch", totalGames: 30},
-  ]
+  const [ emulators, setEmulators ] = useState([])
+
+  useEffect(() => {
+    async function fetchEmulators() {
+      const response = await findAllEmulators()
+      setEmulators(response)
+    }
+    fetchEmulators()
+  }, [])
 
   return (
       <div>
@@ -30,8 +36,11 @@ export default function EmulatorList() {
               className={`${styles.quickStartBtn} navigation-item`}
               to={`emulators/${emulator.id}`}
             >
-              <span className={`${styles.emulatorName}`}>{ emulator.name }</span>
-              <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames } Jogos</span>
+              <div className={styles.emulatorCardHeader}>
+                <span className={`${styles.emulatorName}`}>{ emulator.name }</span>
+                <span className={styles.emulatorPlatform}>{ emulator.platform }</span>
+              </div>
+              <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames || '0' } Jogos</span>
               <GameController/>
             </NavLink>
           ))}
@@ -48,7 +57,7 @@ export default function EmulatorList() {
 
           ) : (
             <>
-              <p className={styles.text}>Você ainda não tem nenhuma plataforma</p>
+              <p className={styles.text}>Você ainda não tem nenhum emulador registrado</p>
               <NavLink 
                 className={`navigation-item ${styles.addEmulatorBtn}`}
                 to="emulators"

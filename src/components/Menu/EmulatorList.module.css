@@ -65,3 +65,23 @@
   position: relative;
   border-radius: 8px;
 }
+
+.emulatorCardHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emulatorPlatform {
+  font-size: .9rem;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #646cff42;
+  border: 1px solid #646cff8f;
+  padding: 0 .8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.3rem;
+  border-radius: .2rem;
+}

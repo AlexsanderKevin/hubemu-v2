@@ -3,7 +3,7 @@ const EmulatorModel = require("../models/EmulatorModel")
 const emulatorController = {
 
   findAll: async ( req, res ) => {
-    console.log(`finding all games`)
+    console.log(`finding all emulators`)
     const emulators = await EmulatorModel.findAll()
     return emulators
   },
