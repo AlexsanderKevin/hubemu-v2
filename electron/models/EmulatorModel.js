@@ -9,13 +9,18 @@ const EmulatorModel = database.define('emulators', {
     primaryKey: true,
   },
   name: {
-    type: Sequelize.STRING
-  },
-  dirPath: {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  dirPath: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   platform: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  exeCommand: {
     type: Sequelize.STRING,
     allowNull: false,
   }

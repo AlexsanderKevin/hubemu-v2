@@ -3,6 +3,7 @@ const path = require('path')
 const { syncDatabase } = require('./database/database')
 const { initRoutes } = require('./routes/routes')
 const url = require('url');
+const { registerDefaultEmulators } = require('./controllers/emulatorController');
 
 function createWindow() {
   const win = new BrowserWindow ({
@@ -14,6 +15,7 @@ function createWindow() {
   })
   
   syncDatabase()
+  .then(registerDefaultEmulators)
   initRoutes()
 
   // Production mode only

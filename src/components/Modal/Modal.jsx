@@ -3,7 +3,7 @@ import { ModalContext } from '../../context/ModalContext'
 import styles from './Modal.module.css'
 
 export default function Modal() {
-  const { modalIsOpen, setModalIsOpen } = useContext(ModalContext)
+  const { modalIsOpen, setModalIsOpen, closeModal } = useContext(ModalContext)
 
   const handleClick = async () => {
     const file = await window.showDirectoryPicker()
@@ -28,7 +28,7 @@ export default function Modal() {
             <button onClick={handleClick}>File explorer</button>
           </div>
           <div className={styles.modalFooter}>
-            <button type='clear'>Voltar</button>
+            <button type='reset' onClick={closeModal}>Voltar</button>
             <button type='submit'>Próximo</button>
           </div>
         </form>
