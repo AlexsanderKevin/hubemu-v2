@@ -32,12 +32,6 @@ export default function Modal({
           </div>
           <div className={styles.modalBody}>
             { children }
-            {/* <p>Você ainda não configurou nenhuma plataforma. Insira o caminho para o diretório em que seu emulador está instalado</p>
-            <div className={styles.inputContainer}>
-              <label htmlFor="directory-input">Caminho do  emulador</label>
-              <input type="text" name='directory-input' id='directory-input' required/>
-            </div>
-            <button onClick={handleClick}>File explorer</button> */}
           </div>
           <div className={styles.modalFooter}>
             <button type='reset' onClick={onClose}>{labelCancelButton}</button>

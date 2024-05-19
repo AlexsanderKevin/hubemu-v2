@@ -10,7 +10,6 @@ import Config from './pages/Config/Config'
 import Emulators from './pages/Emulators/Emulators'
 import Modal from './components/Modal/Modal'
 import { ModalProvider } from './context/ModalContext'
-import ModalNoEmulators from './components/Modal/ModalNoEmulators/ModalNoEmulators'
 import { GlobalPrivider } from './context/GlobalContext'
 
 function App() {

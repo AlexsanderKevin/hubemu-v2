@@ -5,18 +5,17 @@ import { NavLink } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { findAllEmulators } from '../../API/emulatorAPI'
 import { GlobalContext } from '../../context/GlobalContext'
-import ModalNoEmulators from '../Modal/ModalNoEmulators/ModalNoEmulators'
+import ModalAddEmulators from '../Modal/ModalAddEmulators/ModalAddEmulators'
 
 export default function EmulatorList() {
   const [ emulators, setEmulators ] = useState([])
-const [ modalIsOpen, setModalIsOpen ] = useState()
+  const [ modalIsOpen, setModalIsOpen ] = useState()
   const { updatedEmulators } = useContext(GlobalContext)
 
   useEffect(() => {
     async function fetchEmulators() {
       const response = await findAllEmulators()
       setEmulators(response)
-      console.log('atualizou')
     }
     fetchEmulators()
   }, [ updatedEmulators ])
@@ -69,7 +68,7 @@ const [ modalIsOpen, setModalIsOpen ] = useState()
 
           ) : (
             <>
-              <ModalNoEmulators 
+              <ModalAddEmulators 
                 isOpen={modalIsOpen} 
                 setIsOpen={setModalIsOpen}
               />
@@ -79,7 +78,6 @@ const [ modalIsOpen, setModalIsOpen ] = useState()
                 to="emulators"
                 onClick={() => {
                   setModalIsOpen(true)
-                  console.log(modalIsOpen)
                 }}
               >
                 Adicionar
