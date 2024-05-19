@@ -1,13 +1,24 @@
-import { useContext } from 'react'
-import { ModalContext } from '../../context/ModalContext'
+import { useContext, useEffect, useState } from 'react'
 import styles from './Modal.module.css'
 
-export default function Modal() {
-  const { modalIsOpen, setModalIsOpen, closeModal } = useContext(ModalContext)
+export default function Modal({ 
+  children, 
+  header, 
+  onClose, 
+  onSubmit, 
+  modalOpenState, 
+  labelSubmitButton, 
+  labelCancelButton,
+}) {
+  const [ modalIsOpen, setModalIsOpen ] = useState(modalOpenState)
 
-  const handleClick = async () => {
-    const file = await window.showDirectoryPicker()
-    console.log(file)
+  useEffect(() => {
+    setModalIsOpen(modalOpenState)
+  }, [modalOpenState])
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    onSubmit()
   }
 
   return ( 
@@ -17,19 +28,20 @@ export default function Modal() {
       <div className={styles.modalContainer}>
         <form action="">
           <div className={styles.modalHeader}>
-            Adicionar plataforma
+            {header}
           </div>
           <div className={styles.modalBody}>
-            <p>Você ainda não configurou nenhuma plataforma. Insira o caminho para o diretório em que seu emulador está instalado</p>
+            { children }
+            {/* <p>Você ainda não configurou nenhuma plataforma. Insira o caminho para o diretório em que seu emulador está instalado</p>
             <div className={styles.inputContainer}>
               <label htmlFor="directory-input">Caminho do  emulador</label>
               <input type="text" name='directory-input' id='directory-input' required/>
             </div>
-            <button onClick={handleClick}>File explorer</button>
+            <button onClick={handleClick}>File explorer</button> */}
           </div>
           <div className={styles.modalFooter}>
-            <button type='reset' onClick={closeModal}>Voltar</button>
-            <button type='submit'>Próximo</button>
+            <button type='reset' onClick={onClose}>{labelCancelButton}</button>
+            <button type='submit' onClick={handleSubmit}>{labelSubmitButton}</button>
           </div>
         </form>
       </div>

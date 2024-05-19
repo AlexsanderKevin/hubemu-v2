@@ -10,6 +10,8 @@ import Config from './pages/Config/Config'
 import Emulators from './pages/Emulators/Emulators'
 import Modal from './components/Modal/Modal'
 import { ModalProvider } from './context/ModalContext'
+import ModalNoEmulators from './components/Modal/ModalNoEmulators/ModalNoEmulators'
+import { GlobalPrivider } from './context/GlobalContext'
 
 function App() {
   const sendRequest = async event => {
@@ -26,13 +28,13 @@ function App() {
   }
 
   return (
+    <GlobalPrivider>
     <GamepadProvider>
     <ModalProvider>
       <div className='body'>
         <BrowserRouter>
           <Menu/>
           <AnimatedBackground/>
-          <Modal/>
           <div className='mainContainer'>
             <Routes>
               <Route path='/' element={<Home/>}/>
@@ -46,6 +48,7 @@ function App() {
       </div>
     </ModalProvider>
     </GamepadProvider>
+    </GlobalPrivider>
   )
 }
 

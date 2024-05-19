@@ -2,19 +2,24 @@ import { ArrowRight, Folder, GameController, Joystick, Plus, Terminal, TerminalW
 import menuStyles from './Menu.module.css'
 import styles from './EmulatorList.module.css'
 import { NavLink } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { findAllEmulators } from '../../API/emulatorAPI'
+import { GlobalContext } from '../../context/GlobalContext'
+import ModalNoEmulators from '../Modal/ModalNoEmulators/ModalNoEmulators'
 
 export default function EmulatorList() {
   const [ emulators, setEmulators ] = useState([])
+const [ modalIsOpen, setModalIsOpen ] = useState()
+  const { updatedEmulators } = useContext(GlobalContext)
 
   useEffect(() => {
     async function fetchEmulators() {
       const response = await findAllEmulators()
       setEmulators(response)
+      console.log('atualizou')
     }
     fetchEmulators()
-  }, [])
+  }, [ updatedEmulators ])
 
   return (
       <div>
@@ -44,8 +49,8 @@ export default function EmulatorList() {
                 <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames || '0' } Jogos</span>
 
                 <div className={styles.emulatorErrorIcons}>
-                  { !emulator.dirPath && <Folder weight='bold' />}
-                  { !emulator.exeCommand && <TerminalWindow weight='bold' />}
+                  { !emulator.dirPath && <Folder weight='bold' /> }
+                  { !emulator.exeCommand && <TerminalWindow weight='bold' /> }
                 </div>
               </div>
               <GameController className={styles.bgSvg}/>
@@ -64,14 +69,22 @@ export default function EmulatorList() {
 
           ) : (
             <>
+              <ModalNoEmulators 
+                isOpen={modalIsOpen} 
+                setIsOpen={setModalIsOpen}
+              />
               <p className={styles.text}>Você ainda não tem nenhum emulador registrado</p>
-              <NavLink 
+              <button 
                 className={`navigation-item ${styles.addEmulatorBtn}`}
                 to="emulators"
+                onClick={() => {
+                  setModalIsOpen(true)
+                  console.log(modalIsOpen)
+                }}
               >
                 Adicionar
                 <Plus weight='bold'/>
-              </NavLink>
+              </button>
             </>
           )}
 

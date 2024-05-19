@@ -15,10 +15,10 @@ function createWindow() {
   })
   
   syncDatabase()
-  .then(registerDefaultEmulators)
   initRoutes()
 
   // Production mode only
+
   // win.loadURL(url.format({
   //       pathname: path.join(__dirname, '../build/index.html'),
   //       protocol: 'file:',
@@ -26,6 +26,7 @@ function createWindow() {
   //   }));
 
   // Development mode only
+
   win.loadURL('http://localhost:3000')
 }
 
