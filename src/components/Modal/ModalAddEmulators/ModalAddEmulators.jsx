@@ -1,29 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import Modal from "../Modal";
-import { registerDefaultEmulators } from "../../../API/emulatorAPI";
 import { GlobalContext } from "../../../context/GlobalContext";
 import styles from './ModalAddEmulators.module.css'
-import { Folder, FolderSimple } from "@phosphor-icons/react";
+import { FolderSimple } from "@phosphor-icons/react";
+import { findAllEmulators, saveEmulators } from "../../../API/emulatorAPI";
 
-const defaultEmulators = [
-  { name: 'PCSX2', platform: 'Playstation 2', exeCommand: 'pcsx2.exe --nogui --fullscreen' },
-  { name: 'Citra', platform: 'Nintendo 3DS', exeCommand: 'pcsx2.exe --nogui --fullscreen' },
-  { name: 'Cemu', platform: 'Nintendo WiiU', exeCommand: 'pcsx2.exe --nogui --fullscreen' },
-  { name: 'Ryujinx', platform: 'Nintendo Switch', exeCommand: 'pcsx2.exe --nogui --fullscreen' },
-  { name: 'MyBoy', platform: 'GBA', exeCommand: 'pcsx2.exe --nogui --fullscreen' },
-]
-
-export default function ModalAddEmulators ({ isOpen, setIsOpen }) {
-  const { setUpdatedEmulators } = useContext(GlobalContext)
+export default function ModalAddEmulators ({ isOpen, setIsOpen, defaultEmulators, setDefaultEmulators }) {
+  const { updatedEmulators, setUpdatedEmulators } = useContext(GlobalContext)
   const [ checkedIndexes, setCheckedIndexes ] = useState([])
+  const [ newEmulators, setNewEmulators ] = useState([])
 
   const handleSubmit = async () => {
-    // await registerDefaultEmulators()
+    await saveEmulators(newEmulators)
     setUpdatedEmulators(state => !state)
+    setCheckedIndexes([])
+    setNewEmulators([])
     setIsOpen(false)
   }
 
-  const handleChange = (event => {
+  const handleChange = (event) => {
     const { checked, value } = event.target
 
     if ( checked ) {
@@ -32,7 +27,24 @@ export default function ModalAddEmulators ({ isOpen, setIsOpen }) {
     else {
       setCheckedIndexes(list => list.filter(item => item !== value))
     }
-  })
+  }
+
+  const handleClose = () => {
+    setCheckedIndexes([])
+    setIsOpen(false)
+  }
+
+  const handleChangeInputDirPath = (event, index) => {
+    const newDefaultEmulators = defaultEmulators
+    newDefaultEmulators[index].dirPath = event.target.value
+    setDefaultEmulators(newDefaultEmulators)
+  }
+
+  useEffect(() => {
+    const emulatorsToCreate = defaultEmulators.filter((emulator, index) => checkedIndexes.includes(index.toString()))
+    setNewEmulators(emulatorsToCreate)
+  }, [ checkedIndexes ])
+
 
   return (
     <Modal
@@ -41,7 +53,7 @@ export default function ModalAddEmulators ({ isOpen, setIsOpen }) {
       labelSubmitButton='Sim'
       labelCancelButton='Não'
       onSubmit={handleSubmit}
-      onClose={() => setIsOpen(false)}
+      onClose={handleClose}
     >
       <div className={styles.emulatorsList}>
         {defaultEmulators.map(( emulator, index ) => (
@@ -56,7 +68,8 @@ export default function ModalAddEmulators ({ isOpen, setIsOpen }) {
               { emulator.name }
             </div>
 
-            { checkedIndexes.includes(index) ? (
+            { checkedIndexes.includes(index.toString()) && (
+
               <div className={styles.containerInputDirPath}>
                 <FolderSimple weight="bold"/>
                 <input
@@ -65,11 +78,14 @@ export default function ModalAddEmulators ({ isOpen, setIsOpen }) {
                   className={styles.inputDirPath}
                   type="text" 
                   placeholder={`Ex: C:/emuladores/${emulator.name}`}
+                  onChange={(event) => handleChangeInputDirPath(event, index)}
                   required
                 />
               </div>
-            ) : null}
+
+            )}
           </label>
+
         ))}
       </div>
     </Modal>
