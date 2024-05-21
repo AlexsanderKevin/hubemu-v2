@@ -13,7 +13,6 @@ const rawgController = {
       
       const response = await fetch(url);
       const dataResponse = await response.json();
-      console.log(dataResponse.results[0])
 
       const { id, background_imagle, short_screenshot } = dataResponse.results[0]
 

@@ -4,7 +4,6 @@ const { exec } = require('child_process')
 
 const gameController = {
   findAll: async ( req, res ) => {
-    console.log(`finding all games`)
     const users = await GameModel.findAll()
     return users
   },
