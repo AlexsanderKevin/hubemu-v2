@@ -3,9 +3,19 @@ const EmulatorModel = require("../models/EmulatorModel")
 const emulatorController = {
 
   findAll: async ( req, res ) => {
-    console.log(`finding all emulators`)
     const emulators = await EmulatorModel.findAll()
     return emulators
+  },
+
+  saveEmulators: async ( event, data ) => {
+    try {
+      const savedEmulators = await EmulatorModel.bulkCreate(data)
+      return savedEmulators
+
+    }
+    catch ( err ) {
+      console.error(err.message)
+    }
   },
 
   registerDefaultEmulators: async ( req, res ) => {
