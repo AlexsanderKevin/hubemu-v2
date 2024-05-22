@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import Modal from "../Modal";
 import { GlobalContext } from "../../../context/GlobalContext";
 import styles from './ModalAddEmulators.module.css'
+import modalStyles from '../Modal.module.css'
 import { FolderSimple } from "@phosphor-icons/react";
-import { findAllEmulators, saveEmulators } from "../../../API/emulatorAPI";
+import { saveEmulators } from "../../../API/emulatorAPI";
 
 export default function ModalAddEmulators ({ isOpen, setIsOpen, defaultEmulators, setDefaultEmulators }) {
   const { updatedEmulators, setUpdatedEmulators } = useContext(GlobalContext)
@@ -70,12 +71,12 @@ export default function ModalAddEmulators ({ isOpen, setIsOpen, defaultEmulators
 
             { checkedIndexes.includes(index.toString()) && (
 
-              <div className={styles.containerInputDirPath}>
+              <div className={modalStyles.containerInputDirPath}>
                 <FolderSimple weight="bold"/>
                 <input
                   id={`input-dirpath-${index}`}
                   name={`input-dirpath-${index}`}
-                  className={styles.inputDirPath}
+                  className={modalStyles.inputDirPath}
                   type="text" 
                   placeholder={`Ex: C:/emuladores/${emulator.name}`}
                   onChange={(event) => handleChangeInputDirPath(event, index)}

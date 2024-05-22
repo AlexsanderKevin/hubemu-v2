@@ -28,38 +28,3 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-.inputDirPath {
-  width: 100%;
-  box-sizing: border-box;
-  padding: .5rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-left: 1px solid #997cc552;
-}
-
-.containerInputDirPath {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: .4rem;
-  border: 1px solid #997cc552;
-  overflow: hidden;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  margin-top: .5rem;
-}
-
-.containerInputDirPath svg {
-  margin: 0 .5rem;
-  font-size: 1.3rem;
-  opacity: .5;
-}
-
-.labelDirPath {
-  opacity: .5;
-  font-size: .9rem;
-  margin-bottom: .2rem;
-}
