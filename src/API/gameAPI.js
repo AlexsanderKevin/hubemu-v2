@@ -13,32 +13,28 @@ export const playGame = async ( event, target ) => {
   catch (err) { console.error(err) }
 }
 
-export const fetchGamesFromDir = async (event, target) => {
+export const fetchGamesFromDir = async (dirPath) => {
   const dirFatec = "C:/Users/1050482123033/Downloads"
   const dirCasa = "D:/Emulador/ROMS/PS2"
   try {
     const games = await window.electron.invoke('fetchGamesFromDir', [{
-      dirPath: dirCasa,
+      dirPath: dirPath,
       fileExtension: 'iso',
     }])
 
-    console.log("games: ", games)
-
-    if (event) event.target.disabled = false
+    return games
   }
   catch (err) { console.error(err) }
 }
 
-export const fetchGameMetadata = async ( event, target ) => {
-  if (event) event.target.disabled = true
+export const fetchGameMetadata = async ( target ) => {
 
   try {
     const metadata = await window.electron.invoke('fetchGameMetadataByName', [{
-      gameName: 'Kingdom Hearts'
+      gameName: target
     }])
     console.log("Metadata: ", metadata)
 
-    if (event) event.target.disabled = false
   }
   catch (err) { console.error(err) }
 }
@@ -50,5 +46,11 @@ export const findAllGames = async () => {
   }
   catch (err) { console.error(err) }
 }
-findAllGames()
 
+export const saveGames = async (newGames) => {
+  try {
+    const games = await window.electron.invoke('saveGames', newGames)
+    return games
+  }
+  catch (err) { console.error(err) }
+}

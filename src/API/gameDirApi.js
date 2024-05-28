@@ -1,14 +1,13 @@
-export const saveGameDir = async (event, target) => {
-  const dirCasa = "D:/Emulador/ROMS/PS2"
+export const saveGameDir = async (dirPath, name) => {
+  // const dirCasa = "D:/Emulador/ROMS/PS2"
 
   try {
     const newDir = await window.electron.invoke('saveGameDir', [{
-      dirPath: dirCasa,
-      supportedFileExtension: 'iso',
-      name: 'Jogos de PS2'
+      dirPath: dirPath,
+      name: name,
     }])
 
-    console.log("new dir: ", newDir)
+    return newDir
   }
   catch (err) { console.error(err) }
 }

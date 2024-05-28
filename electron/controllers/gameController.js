@@ -1,6 +1,12 @@
-const GameDirModel = require('../models/GameDirModel.js')
 const GameModel = require('../models/GameModel.js')
 const { exec } = require('child_process')
+const { fetchGameMetadataByName } = require('./rawgController.js')
+
+async function setMetadata(game) {
+  const metadata = await fetchGameMetadataByName('kingdom hearts')
+  console.log('game: ', game.name)
+  console.log('metadata: ', metadata)
+}
 
 const gameController = {
   findAll: async ( req, res ) => {
@@ -10,7 +16,8 @@ const gameController = {
 
   fetchGamesFromDir: async (event, data) => {
     const { dirPath, fileExtension } = data[0]
-    const command = `ls ${dirPath}/*${fileExtension}`
+    // const command = `ls ${dirPath}/*${fileExtension}`
+    const command = `ls ${dirPath}/`
 
     try {
       const games = await new Promise((resolve, reject) => {
@@ -36,8 +43,13 @@ const gameController = {
   },
 
   saveGames: async (event, data) => {
-    const { emulatorId, dirId, fileExtension } = data[0]
-
+    try {
+      const savedGames = await GameModel.bulkCreate(data)
+      return savedGames
+    }
+    catch ( err ) {
+      console.error(err.message)
+    }
   },
 
   playGame: async (event, data) => {

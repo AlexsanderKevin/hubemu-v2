@@ -8,8 +8,8 @@ const gameDirController = {
   },
 
   saveGameDir: async ( event, data ) => {
-    const { dirPath, name, supportedFileExtension } = data[0]
-    const newDir = await GameDirModel.create({ dirPath, name, supportedFileExtension })
+    const { dirPath, name } = data[0]
+    const newDir = await GameDirModel.create({ dirPath, name})
     return newDir.dataValues
   }
 

@@ -16,10 +16,6 @@ const GameDirModel = database.define('gameDirs', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  supportedFileExtension: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  }
 })
 
 module.exports = GameDirModel
