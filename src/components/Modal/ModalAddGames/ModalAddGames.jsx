@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "../Modal";
 import { FolderSimple } from "@phosphor-icons/react";
 import modalStyles from '../Modal.module.css'
 import styles from './ModalAddGames.module.css'
 import { fetchGameMetadata, fetchGamesFromDir, saveGames } from "../../../API/gameAPI";
 import { saveGameDir } from "../../../API/gameDirApi";
+import { GlobalContext } from "../../../context/GlobalContext";
 
 export default function ModalAddGames({ isOpen, setIsOpen }) {
   const [ gamesInDir, setGamesInDir ] = useState([])
   const [ hasMadeSearch, setHasMadeSearch ] = useState(false)
   const [ inputDirPath, setInputDirPath ] = useState('')
+  const { setUpdatedGames } = useContext(GlobalContext)
 
   useEffect(() => {
     const getMeta = async () => {
@@ -32,9 +34,10 @@ export default function ModalAddGames({ isOpen, setIsOpen }) {
     const gamesToBeSaved = gamesInDir.map( item => { return { name: item, gameDirId: newDir.id } })
     await saveGames(gamesToBeSaved)
     setGamesInDir([])
-    setIsOpen(false)
     setHasMadeSearch(false)
     setInputDirPath('')
+    setUpdatedGames(state => !state)
+    setIsOpen(false)
   }
 
   const searchGamesInDir = async () => {

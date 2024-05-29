@@ -5,20 +5,20 @@ import homeStyles from './Home.module.css';
 import { ClockCountdown, Play } from '@phosphor-icons/react'
 import { Disc } from '@phosphor-icons/react/dist/ssr';
 
-export default function ListRecents () {
-  const list  = [
-    {
-      name: "Kingdom Hearts 2", 
-      gamePath: "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso", 
-      dirPath: "D:/Emulador/Emuladores/PS2 - PCSX2", 
-      exeCommand: "./pcsx2.exe --nogui --fullscreen",
-      backgroundImage: "https://media.rawg.io/media/games/92b/92b781d88f6d047b1c61b6e0d157343b.jpg",
-    },
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"}
-  ]
+export default function ListRecents ({ allGames }) {
+  // const list  = [
+  //   {
+  //     name: "Kingdom Hearts 2", 
+  //     gamePath: "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso", 
+  //     dirPath: "D:/Emulador/Emuladores/PS2 - PCSX2", 
+  //     exeCommand: "./pcsx2.exe --nogui --fullscreen",
+  //     backgroundImage: "https://media.rawg.io/media/games/92b/92b781d88f6d047b1c61b6e0d157343b.jpg",
+  //   },
+  //   {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+  //   {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+  //   {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
+  //   {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"}
+  // ]
 
   return (
     <>
@@ -36,7 +36,7 @@ export default function ListRecents () {
         data-right-container="list-recents"
         className={`${styles.listRecents} navigation-container horizontal`}
       >
-        {list.map(( item, index ) => (
+        {allGames.map(( item, index ) => (
           <button 
             key={ index }
             className='navigation-item' 

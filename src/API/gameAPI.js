@@ -41,7 +41,8 @@ export const fetchGameMetadata = async ( target ) => {
 
 export const findAllGames = async () => {
   try {
-    const games = await window.electron.invoke('findAllGames')
+    let games = await window.electron.invoke('findAllGames')
+    games = games.map(game => game.dataValues)
     return games
   }
   catch (err) { console.error(err) }
