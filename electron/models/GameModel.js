@@ -39,8 +39,11 @@ const GameModel = database.define('games', {
 GameDirModel.hasMany(GameModel, {
   foreignKey: 'gameDirId',
 })
+GameModel.belongsTo(GameDirModel)
+
 EmulatorModel.hasMany(GameModel, {
   foreignKey: 'emulatorId',
 })
+GameModel.belongsTo(EmulatorModel)
 
 module.exports = GameModel

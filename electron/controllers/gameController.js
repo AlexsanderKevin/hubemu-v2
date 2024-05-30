@@ -1,11 +1,29 @@
+const { Sequelize } = require('sequelize')
+const GameDirModel = require('../models/GameDirModel.js')
 const GameModel = require('../models/GameModel.js')
+const EmulatorModel = require('../models/EmulatorModel.js')
 const { exec } = require('child_process')
-const { fetchGameMetadataByName } = require('./rawgController.js')
 
 const gameController = {
   findAll: async ( req, res ) => {
-    const users = await GameModel.findAll()
-    return users
+    try {
+      let games = await GameModel.findAll({
+        include: [ GameDirModel, EmulatorModel ]
+      })
+      games = games.map(game => game.get({ plain: true }))
+      console.log('Games: ', games)
+      return games
+    }
+    catch (err) {
+      console.log('Error finding all games: ', err.message)
+    }
+  },
+  
+  findFavoriteGames: async ( req, res ) => {
+    const favorites = await GameModel.findAll({
+      where: { isFavorited: true }
+    })
+    return favorites
   },
 
   fetchGamesFromDir: async (event, data) => {

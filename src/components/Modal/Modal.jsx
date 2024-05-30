@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Modal.module.css'
 
 export default function Modal({ 
