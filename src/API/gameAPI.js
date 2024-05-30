@@ -27,14 +27,14 @@ export const fetchGamesFromDir = async (dirPath) => {
   catch (err) { console.error(err) }
 }
 
-export const fetchGameMetadata = async ( target ) => {
+export const fetchGameMetadata = async ( gameName ) => {
 
   try {
-    const metadata = await window.electron.invoke('fetchGameMetadataByName', [{
-      gameName: target
-    }])
-    console.log("Metadata: ", metadata)
-
+    const metadata = await window.electron.invoke(
+      'fetchGameMetadataByName', 
+      [{ gameName }]
+    )
+    return metadata
   }
   catch (err) { console.error(err) }
 }
@@ -52,6 +52,14 @@ export const saveGames = async (newGames) => {
   try {
     const games = await window.electron.invoke('saveGames', newGames)
     return games
+  }
+  catch (err) { console.error(err) }
+}
+
+export const setGameMetadata = async (metadata) => {
+  try {
+    const game = await window.electron.invoke('setGameMetadata', metadata)
+    return game
   }
   catch (err) { console.error(err) }
 }

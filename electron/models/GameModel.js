@@ -18,6 +18,10 @@ const GameModel = database.define('games', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  nameClean: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   backgroundImgUrl: {
     type: Sequelize.STRING,
     allowNull: true,

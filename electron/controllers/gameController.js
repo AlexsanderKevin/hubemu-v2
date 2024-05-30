@@ -2,12 +2,6 @@ const GameModel = require('../models/GameModel.js')
 const { exec } = require('child_process')
 const { fetchGameMetadataByName } = require('./rawgController.js')
 
-async function setMetadata(game) {
-  const metadata = await fetchGameMetadataByName('kingdom hearts')
-  console.log('game: ', game.name)
-  console.log('metadata: ', metadata)
-}
-
 const gameController = {
   findAll: async ( req, res ) => {
     const users = await GameModel.findAll()
@@ -16,7 +10,6 @@ const gameController = {
 
   fetchGamesFromDir: async (event, data) => {
     const { dirPath, fileExtension } = data[0]
-    // const command = `ls ${dirPath}/*${fileExtension}`
     const command = `ls ${dirPath}/`
 
     try {
@@ -68,6 +61,33 @@ const gameController = {
     catch (err) {
       throw new Error(`Error at playing game: ${err.message}`)
     }
+  },
+
+  setGameMetadata: async (event, data) => {
+    const { id, backgroundImgUrl, screenshotImgUrl, idRawgApi } = data
+
+    try {
+      GameModel.update(
+        { 
+          backgroundImgUrl,
+          screenshotImgUrl, 
+          idRawgApi 
+        },
+        { where: { id } }
+      )
+      .then((result) => {
+        if( result[0] === 1) {
+          console.log('Game updated')
+        }
+        else {
+          console.error('Game not found or not updated')
+        }
+      })
+    }
+    catch (err) {
+      throw new Error(`Error at setting game metadata: ${err.message}`)
+    }
+
   },
   
 }

@@ -13,25 +13,16 @@ export default function ModalAddGames({ isOpen, setIsOpen }) {
   const [ inputDirPath, setInputDirPath ] = useState('')
   const { setUpdatedGames } = useContext(GlobalContext)
 
-  useEffect(() => {
-    const getMeta = async () => {
-      for(const game in gamesInDir) {
-        try {
-          const response = await fetchGameMetadata(game)
-          console.log('response', response)
-        }
-        catch (err) { console.error('erro ao buscar metadats')}
-      }
-    }
-
-    getMeta()
-  }, [gamesInDir])
-
   const handleSaveGames = async () => {
     const dirArray = inputDirPath.split('\\')
     const dirName = dirArray[dirArray.length - 1]
     const newDir = await saveGameDir(inputDirPath, dirName)
-    const gamesToBeSaved = gamesInDir.map( item => { return { name: item, gameDirId: newDir.id } })
+    const gamesToBeSaved = gamesInDir
+      .map( item => {
+        const result = { name: item, gameDirId: newDir.id }
+        result.nameClean = result.name.split('').reverse().join('').split('.')[1].split('').reverse().join('')
+        return result 
+      })
     await saveGames(gamesToBeSaved)
     setGamesInDir([])
     setHasMadeSearch(false)
@@ -42,7 +33,7 @@ export default function ModalAddGames({ isOpen, setIsOpen }) {
 
   const searchGamesInDir = async () => {
     const games = await fetchGamesFromDir(inputDirPath)
-    if (games) setGamesInDir(games)
+    if (games) setGamesInDir(games.filter(item => item))
     setHasMadeSearch(true)
   }
 

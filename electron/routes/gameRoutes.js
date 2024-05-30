@@ -6,6 +6,7 @@ const initGameRoutes = () => {
   ipcMain.handle('findAllGames', gameController.findAll)
   ipcMain.handle('fetchGamesFromDir', gameController.fetchGamesFromDir)
   ipcMain.handle('saveGames', gameController.saveGames)
+  ipcMain.handle('setGameMetadata', gameController.setGameMetadata)
 }
 
 module.exports = { initGameRoutes }
