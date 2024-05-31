@@ -67,7 +67,7 @@ export default function EmulatorList() {
               <span className={styles.emulatorPlatform}>{ emulator.platform }</span>
             </div>
             <div className={styles.emulatorCardFooter}>
-              <span className={`${styles.emulatorTotalGames}`}>{ emulator.totalGames || '0' } Jogos</span>
+              <span className={`${styles.emulatorTotalGames}`}>{ emulator.games?.length || '0' } Jogos</span>
 
               <div className={styles.emulatorErrorIcons}>
                 { !emulator.dirPath && <Folder weight='bold' /> }

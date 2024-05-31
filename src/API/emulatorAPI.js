@@ -3,10 +3,11 @@ export const findAllEmulators = async (event, target) => {
 
   try {
     const emulators = await window.electron.invoke('findAllEmulators')
-    const response = emulators.map(emulator => emulator.dataValues)
+    // const response = emulators.map(emulator => emulator.dataValues)
 
     if (event) event.target.disabled = false
-    return response
+    console.log(emulators)
+    return emulators
   }
   catch (err) { console.error(err) }
 }

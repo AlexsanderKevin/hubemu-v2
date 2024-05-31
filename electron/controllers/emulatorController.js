@@ -1,10 +1,19 @@
 const EmulatorModel = require("../models/EmulatorModel")
+const GameModel = require("../models/GameModel")
 
 const emulatorController = {
 
   findAll: async ( req, res ) => {
-    const emulators = await EmulatorModel.findAll()
-    return emulators
+    try {
+      let emulators = await EmulatorModel.findAll({
+        include: [ GameModel ]
+      })
+      emulators = emulators.map(emulator => emulator.get({ plain: true }))
+      return emulators
+    }
+    catch (err) {
+      console.log('Error finding all emulators: ', err.message)
+    }
   },
 
   saveEmulators: async ( event, data ) => {
