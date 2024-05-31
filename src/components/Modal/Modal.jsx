@@ -34,8 +34,8 @@ export default function Modal({
             { children }
           </div>
           <div className={styles.modalFooter}>
-            <button type='reset' onClick={onClose}>{labelCancelButton}</button>
-            <button type='submit' onClick={handleSubmit}>{labelSubmitButton}</button>
+            { labelCancelButton && <button type='reset' onClick={onClose}>{labelCancelButton}</button> }
+            { labelSubmitButton && <button type='submit' onClick={handleSubmit}>{labelSubmitButton}</button> }
           </div>
         </form>
       </div>

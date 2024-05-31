@@ -1,16 +1,15 @@
 import './App.css'
 import Menu from './components/Menu/Menu'
 import { GamepadProvider } from './context/Gamepad'
-import { useEffect } from 'react'
 import Home from './pages/Home/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AnimatedBackground from './components/AnimatedBackground/AnimatedBackground'
 import Library from './pages/Library/Library'
 import Config from './pages/Config/Config'
 import Emulators from './pages/Emulators/Emulators'
-import Modal from './components/Modal/Modal'
 import { ModalProvider } from './context/ModalContext'
 import { GlobalPrivider } from './context/GlobalContext'
+import ModalSetEmulator from './components/Modal/ModalSetEmulator/ModalSetEmulator'
 
 function App() {
   const sendRequest = async event => {
@@ -33,6 +32,7 @@ function App() {
       <div className='body'>
         <BrowserRouter>
           <Menu/>
+          <ModalSetEmulator/>
           <AnimatedBackground/>
           <div className='mainContainer'>
             <Routes>

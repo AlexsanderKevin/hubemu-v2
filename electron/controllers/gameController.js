@@ -11,7 +11,6 @@ const gameController = {
         include: [ GameDirModel, EmulatorModel ]
       })
       games = games.map(game => game.get({ plain: true }))
-      console.log('Games: ', games)
       return games
     }
     catch (err) {
@@ -94,19 +93,29 @@ const gameController = {
         { where: { id } }
       )
       .then((result) => {
-        if( result[0] === 1) {
-          console.log('Game updated')
-        }
-        else {
-          console.error('Game not found or not updated')
-        }
+        if( result[0] === 1 ) console.log('Game updated')
+        else console.error('Game not found or not updated')
       })
     }
     catch (err) {
       throw new Error(`Error at setting game metadata: ${err.message}`)
     }
-
   },
+
+  setGameEmulator: async (event, data) => {
+      const { gameId, emulatorId } = data
+
+      try {
+        GameModel.update({ emulatorId }, { where: { id: gameId } })
+        .then(result => {
+          if ( result[0] === 1 ) console.log('Game updated')
+          else console.error('Game not found or not updated')
+        })
+      }
+      catch (err) {
+        throw new Error('Error at setting game emulator: ' + err.message)
+      }
+  }
   
 }
 

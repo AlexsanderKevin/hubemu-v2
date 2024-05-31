@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './ListRecents.module.css'
 import { Disc, Play } from '@phosphor-icons/react';
 import { fetchGameMetadata, playGame, setGameMetadata } from '../../API/gameAPI';
+import { ModalContext } from '../../context/ModalContext';
 
 export default function CardRecentGame({ game, ...props }) {
   const [ provisionalBg, setProvisionalBg ] = useState('')
+  const { setOpenModalSetEmulator, setGameId } = useContext(ModalContext)
 
   useState(() => {
-    console.log('Game: ', game)
     const getMetadata = async name => {
       const metadata = await fetchGameMetadata(name)
       setProvisionalBg(metadata.background_image)
@@ -27,6 +28,10 @@ export default function CardRecentGame({ game, ...props }) {
   const handleClick = (event) => {
     if (game.emulatorId) {
       playGame(event, game)
+    }
+    else {
+      setOpenModalSetEmulator(true)
+      setGameId(game.id)
     }
   }
 

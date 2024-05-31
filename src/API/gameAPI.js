@@ -63,3 +63,8 @@ export const setGameMetadata = async (metadata) => {
   }
   catch (err) { console.error(err) }
 }
+
+export const setGameEmulator = async (gameId, emulatorId) => {
+  try { await window.electron.invoke('setGameEmulator', { gameId, emulatorId }) }
+  catch (err) { console.error(err) }
+}

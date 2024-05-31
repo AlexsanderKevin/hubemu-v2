@@ -1,4 +1,4 @@
-import { ArrowRight, Folder, GameController, Joystick, Plus, Terminal, TerminalWindow } from '@phosphor-icons/react'
+import { Folder, GameController, Joystick, Plus, Terminal, TerminalWindow } from '@phosphor-icons/react'
 import menuStyles from './Menu.module.css'
 import styles from './EmulatorList.module.css'
 import { NavLink } from 'react-router-dom'

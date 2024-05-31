@@ -3,19 +3,13 @@ import { createContext, useState } from "react";
 export const ModalContext = createContext()
 
 export const ModalProvider = ({children}) => {
-  const [ modalIsOpen, setModalIsOpen ] = useState(true)
-
-  const openModal = component => {
-    setModalIsOpen(true)
-  }
-
-  const closeModal = () => {
-    setModalIsOpen(false)
-  }
+  const [ openModalSetEmulator, setOpenModalSetEmulator ] = useState(false)
+  const [ gameId, setGameId ] = useState(null)
 
   return (
     <ModalContext.Provider value={{
-      modalIsOpen, setModalIsOpen, openModal, closeModal
+      openModalSetEmulator, setOpenModalSetEmulator,
+      gameId, setGameId,
     }}>
       {children}
     </ModalContext.Provider>
