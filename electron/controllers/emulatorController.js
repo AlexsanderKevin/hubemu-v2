@@ -20,7 +20,6 @@ const emulatorController = {
     try {
       const savedEmulators = await EmulatorModel.bulkCreate(data)
       return savedEmulators
-
     }
     catch ( err ) {
       console.error(err.message)

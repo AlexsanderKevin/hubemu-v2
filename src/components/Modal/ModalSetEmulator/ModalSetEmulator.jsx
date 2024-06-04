@@ -9,7 +9,12 @@ import { GlobalContext } from "../../../context/GlobalContext";
 
 export default function ModalSetEmulator() {
   const [ emulatorList, setEmulatorList ] = useState([])
-  const { openModalSetEmulator, setOpenModalSetEmulator, gameId } = useContext(ModalContext)
+  const { 
+    openModalSetEmulator, 
+    setOpenModalSetEmulator, 
+    setOpenModalAddEmulator, 
+    gameId 
+  } = useContext(ModalContext)
   const { setUpdatedGames, updatedEmulators } = useContext(GlobalContext)
 
 
@@ -31,6 +36,12 @@ export default function ModalSetEmulator() {
     setOpenModalSetEmulator(false)
   }
 
+  const handleNoEmulators = (e) => {
+    e.preventDefault()
+    setOpenModalAddEmulator(true)
+    setOpenModalSetEmulator(false)
+  }
+
   return (
     <Modal
       header='Selecione o Emulador'
@@ -40,7 +51,7 @@ export default function ModalSetEmulator() {
       onClose={handleClose}
     >
       <div className={styles.emulatorList}>
-        { emulatorList.map((emulator, index) => (
+        { emulatorList.length ? emulatorList.map((emulator, index) => (
           <button
             key={index}
             onClick={() => handleSubmit(gameId, emulator.id)}
@@ -48,7 +59,14 @@ export default function ModalSetEmulator() {
             <span className={styles.labelName}><Joystick weight="fill"/> {emulator.name}</span>
             <span className={styles.labelPlatform}>{emulator.platform}</span>
           </button>
-        ))}
+        )) : (
+          <>
+            <p>Você ainda não tem emuladores registrados</p>
+            <button
+              onClick={handleNoEmulators}
+            >Adicionar Emuladores +</button>
+          </>
+        )}
       </div>
     </Modal>
   )

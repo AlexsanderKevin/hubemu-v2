@@ -6,10 +6,11 @@ import { useContext, useEffect, useState } from 'react'
 import { findAllEmulators } from '../../API/emulatorAPI'
 import { GlobalContext } from '../../context/GlobalContext'
 import ModalAddEmulators from '../Modal/ModalAddEmulators/ModalAddEmulators'
+import { ModalContext } from '../../context/ModalContext'
 
 export default function EmulatorList() {
   const [ emulators, setEmulators ] = useState([])
-  const [ modalIsOpen, setModalIsOpen ] = useState()
+  const { openModalAddEmulator, setOpenModalAddEmulator } = useContext(ModalContext)
   const { updatedEmulators } = useContext(GlobalContext)
   const [ defaultEmulators, setDefaultEmulators ] = useState([
     { name: 'PCSX2', platform: 'Playstation 2', exeCommand: 'pcsx2.exe --nogui --fullscreen' },
@@ -79,8 +80,8 @@ export default function EmulatorList() {
         ))}
 
         <ModalAddEmulators 
-          isOpen={modalIsOpen} 
-          setIsOpen={setModalIsOpen}
+          isOpen={openModalAddEmulator} 
+          setIsOpen={setOpenModalAddEmulator}
           defaultEmulators={defaultEmulators}
           setDefaultEmulators={setDefaultEmulators}
         />
@@ -91,7 +92,7 @@ export default function EmulatorList() {
             className={`navigation-item ${styles.moreEmulatorsLink}`}
             to="emulators"
             onClick={() => {
-              setModalIsOpen(true)
+              setOpenModalAddEmulator(true)
             }}
           >
             Adicionar
