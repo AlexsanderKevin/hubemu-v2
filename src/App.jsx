@@ -10,6 +10,7 @@ import Emulators from './pages/Emulators/Emulators'
 import { ModalProvider } from './context/ModalContext'
 import { GlobalPrivider } from './context/GlobalContext'
 import ModalSetEmulator from './components/Modal/ModalSetEmulator/ModalSetEmulator'
+import ModalSetDirOfEmulator from './components/Modal/ModalSetDirOfEmulator/ModalSetDirOfEmulator'
 
 function App() {
   const sendRequest = async event => {
@@ -33,6 +34,7 @@ function App() {
         <BrowserRouter>
           <Menu/>
           <ModalSetEmulator/>
+          <ModalSetDirOfEmulator/>
           <AnimatedBackground/>
           <div className='mainContainer'>
             <Routes>

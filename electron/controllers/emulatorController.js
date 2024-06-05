@@ -40,10 +40,21 @@ const emulatorController = {
       return registeredDefaultEmulators
 
     }
-    catch ( err ) {
-      console.error(err.message)
+    catch ( err ) { console.error(err.message) }
+  },
+
+  setEmulatorDirPath: async (event, data) => {
+    const { dirPath, id } = data
+
+    try {
+      EmulatorModel.update({ dirPath }, { where: { id } })
+      .then(result => {
+        if( result[0] === 1 ) console.log('Emulator updated')
+        else console.error('Emulator not found or not updated')
+      })
     }
-  }
+    catch ( err ) { console.error(err.message) }
+  },
 
 }
 

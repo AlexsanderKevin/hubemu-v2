@@ -6,7 +6,6 @@ export const findAllEmulators = async (event, target) => {
     // const response = emulators.map(emulator => emulator.dataValues)
 
     if (event) event.target.disabled = false
-    console.log(emulators)
     return emulators
   }
   catch (err) { console.error(err) }
@@ -33,4 +32,9 @@ export const registerDefaultEmulators = async (event, target) => {
   }
   catch (err) { console.error(err) }
 
+}
+
+export const setEmulatorDirPath = async (dirPath, id) => {
+  try { await window.electron.invoke('setEmulatorDirPath', {dirPath, id}) }
+  catch (err) { console.error(err) }
 }

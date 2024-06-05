@@ -6,7 +6,12 @@ import { ModalContext } from '../../context/ModalContext';
 
 export default function CardRecentGame({ game, ...props }) {
   const [ provisionalBg, setProvisionalBg ] = useState('')
-  const { setOpenModalSetEmulator, setGameId } = useContext(ModalContext)
+  const { 
+    setOpenModalSetEmulator, 
+    setGameId, 
+    setEmulatorId,
+    setOpenModalSetDirOfEmulator,
+  } = useContext(ModalContext)
 
   useState(() => {
     const getMetadata = async name => {
@@ -26,8 +31,12 @@ export default function CardRecentGame({ game, ...props }) {
   }, [])
 
   const handleClick = (event) => {
-    if (game.emulatorId) {
+    if (game.emulatorId && game.emulator.dirPath) {
       playGame(event, game)
+    }
+    else if (game.emulatorId && !game.emulator?.dirPath) {
+      setEmulatorId(game.emulatorId)
+      setOpenModalSetDirOfEmulator(true)
     }
     else {
       setOpenModalSetEmulator(true)

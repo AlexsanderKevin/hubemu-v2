@@ -6,8 +6,6 @@ export const GlobalPrivider = ({children}) => {
   const [ updatedEmulators, setUpdatedEmulators ] = useState(false)
   const [ updatedGames, setUpdatedGames ] = useState(false)
 
-  // useState(() => {console.log('mudou')}, [updatedEmulators])
-
   return (
     <GlobalContext.Provider value={{
       updatedEmulators, setUpdatedEmulators,

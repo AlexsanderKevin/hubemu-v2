@@ -10,7 +10,7 @@ import { GlobalContext } from '../../context/GlobalContext';
 export default function Home () {
   const [ games, setGames ] = useState([])
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
-  const { updatedGames } = useContext(GlobalContext)
+  const { updatedGames, updatedEmulators } = useContext(GlobalContext)
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -18,7 +18,7 @@ export default function Home () {
       setGames(dbGames)
     }
     fetchGames()
-  }, [ updatedGames ])
+  }, [ updatedGames, updatedEmulators ])
 
   return (
     <>
