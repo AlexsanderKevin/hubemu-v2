@@ -62,6 +62,7 @@ export default function EmulatorList() {
             key={ index }
             className={`${styles.quickStartBtn} navigation-item`}
             to={`emulators/${emulator.id}`}
+            data-navigation-id={index}
           >
             <div className={styles.emulatorCardHeader}>
               <span className={`${styles.emulatorName}`}>{ emulator.name }</span>

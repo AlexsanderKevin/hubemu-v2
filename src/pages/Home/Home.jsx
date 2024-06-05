@@ -6,18 +6,22 @@ import { findAllGames } from '../../API/gameAPI';
 import { Plus } from '@phosphor-icons/react';
 import ModalAddGames from '../../components/Modal/ModalAddGames/ModalAddGames';
 import { GlobalContext } from '../../context/GlobalContext';
+import { GamepadContext } from '../../context/Gamepad';
 
 export default function Home () {
   const [ games, setGames ] = useState([])
   const [ modalIsOpen, setModalIsOpen ] = useState(false)
   const { updatedGames, updatedEmulators } = useContext(GlobalContext)
+  const { jumpTo } = useContext(GamepadContext)
 
   useEffect(() => {
     const fetchGames = async () => {
       const dbGames = await findAllGames()
-      setGames(dbGames)
+      setGames(dbGames.slice(0, 5))
     }
     fetchGames()
+
+    jumpTo('#list-recents', 0)
   }, [ updatedGames, updatedEmulators ])
 
   return (

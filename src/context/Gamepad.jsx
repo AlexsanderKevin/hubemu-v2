@@ -23,7 +23,7 @@ export const GamepadProvider = ({children}) => {
   }
 
   const toNextItem = (nextContainer, nextItem) => {
-    if (activeItemIndex < maxItems -1) setActiveItemIndex(item => item + 1)
+    if (activeItemIndex < maxItems - 1) setActiveItemIndex(item => item + 1)
     else changeContainer(nextContainer, nextItem)
   }
 
@@ -51,6 +51,8 @@ export const GamepadProvider = ({children}) => {
       .querySelector(currentContainerElementId)
       .getAttribute(`data-${direction}-container`)
 
+      console.log(currentContainerElementId, activeItemIndex)
+
     switch (orientation) {
       case 'horizontal': 
         if (direction === 'up' || direction === 'down') changeContainer(nextContainerElementId)
@@ -63,6 +65,15 @@ export const GamepadProvider = ({children}) => {
         else if (direction === 'up') toPrevItem(nextContainerElementId, 'last')
         break
       default: return null
+    }
+  }
+
+  const jumpTo = (targetContainer, targetItem, orientation) => {
+    if (targetContainer && targetItem && orientation) {
+      setOrientation(orientation)
+      setCurrentContainerElementId(targetContainer)
+      setActiveItemIndex(+targetItem)
+      console.log(currentContainerElementId, activeItemIndex)
     }
   }
 
@@ -108,6 +119,20 @@ export const GamepadProvider = ({children}) => {
   useEffect(() => {
     window.addEventListener('gamepadconnected', handleGamepadConnected)
     window.addEventListener('gamepaddisconnected', handleGamepadDisconnected)
+
+    const allNavigationItems = document.querySelectorAll('.navigation-item')
+
+    allNavigationItems.forEach(item => {
+      item.addEventListener('click', (event) => {
+        const targetContainer = event.target.parentElement.getAttribute('id')
+        const targetItem = event.target.getAttribute('data-navigation-id')
+        const targetOrientation =event.target.parentElement.getAttribute('data-orientation') 
+        console.log(event.target)
+        console.log(targetItem)
+        jumpTo("#" + targetContainer, targetItem, targetOrientation)
+      })
+    })  
+
   }, [])
 
   useEffect(() => {
@@ -129,7 +154,7 @@ export const GamepadProvider = ({children}) => {
   }, [connectedGamepad, gameLoopOn, setGameLoopInterval])
 
   return (
-    <GamepadContext.Provider value={{}}>
+    <GamepadContext.Provider value={{ jumpTo }}>
       {children}
     </GamepadContext.Provider>
   )

@@ -3,7 +3,7 @@ import Modal from "../Modal";
 import { FolderSimple } from "@phosphor-icons/react";
 import modalStyles from '../Modal.module.css'
 import styles from './ModalAddGames.module.css'
-import { fetchGameMetadata, fetchGamesFromDir, saveGames } from "../../../API/gameAPI";
+import { fetchGamesFromDir, saveGames } from "../../../API/gameAPI";
 import { saveGameDir } from "../../../API/gameDirApi";
 import { GlobalContext } from "../../../context/GlobalContext";
 
@@ -20,7 +20,12 @@ export default function ModalAddGames({ isOpen, setIsOpen }) {
     const gamesToBeSaved = gamesInDir
       .map( item => {
         const result = { name: item, gameDirId: newDir.id }
-        result.nameClean = result.name.split('').reverse().join('').split('.')[1].split('').reverse().join('')
+
+        if (result.name.includes('undefined')) {
+          result.nameClean = result.name.replace('undefined', '')
+        } else {
+          result.nameClean = result.name.split('').reverse().join('').split('.')[1].split('').reverse().join('')
+        }
         return result 
       })
     await saveGames(gamesToBeSaved)

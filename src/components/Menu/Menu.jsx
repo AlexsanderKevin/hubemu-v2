@@ -22,6 +22,7 @@ export default function Menu() {
           <NavLink 
             className={`${styles.navLink} navigation-item`}
             to="/"
+            data-navigation-id={0}
           >
             <House weight='bold' /> 
             <House weight='bold' className={styles.bgIcon} /> 
@@ -31,6 +32,7 @@ export default function Menu() {
           <NavLink 
             className={`${styles.navLink} navigation-item`}
             to="/lib"
+            data-navigation-id={1}
           >
             <SquaresFour weight='bold' /> 
             <SquaresFour weight='bold' className={styles.bgIcon} /> 
@@ -40,6 +42,7 @@ export default function Menu() {
           <NavLink 
             className={`${styles.navLink} navigation-item`}
             to="/config"
+            data-navigation-id={2}
           >
             <GearSix weight='bold' /> 
             <GearSix weight='bold' className={styles.bgIcon} /> 
