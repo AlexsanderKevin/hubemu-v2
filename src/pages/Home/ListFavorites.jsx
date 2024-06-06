@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sparkle, Play, Disc } from '@phosphor-icons/react'
 import homeStyles from './Home.module.css'
 import styles from './ListFavorites.module.css'
+import { findFavoriteGames } from '../../API/gameAPI';
+import CardGame from '../../components/CardGame/CardGame';
 
 export default function ListFavorites () {
-  const list = [
-    {name: "Kingdom Hearts", gamePath: "D:/Emulador/ROMS/PS2/Kingdom Hearts 2.iso", dirPath: "D:/Emulador/Emuladores/PS2 - PCSX2", exeCommand: "./pcsx2.exe --nogui --fullscreen"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-    {name: "Jogo", gamePath: "#", dirPath: "#", exeCommand: "#"},
-  ]
+  const [ favoriteGames, setFavoriteGames ] = useState([])
+
+  useEffect(() => {
+    const fetchFavoriteGames = async () => {
+      const games = await findFavoriteGames()
+      setFavoriteGames(games)
+      console.log('favorited: ', games)
+    }
+    fetchFavoriteGames()
+  }, [])
 
   return (
     <>
@@ -20,30 +24,32 @@ export default function ListFavorites () {
         Favoritos
       </h1>
 
-      <div 
-        id='list-favorites'
-        data-navigation-index="1" 
-        data-orientation="horizontal" 
-        data-up-container="list-recents"
-        data-down-container="list-favorites"
-        data-left-container="list-quick-start"
-        data-right-container="list-favorites"
-        className={`${styles.listFavorites} navigation-container horizontal`}
-      >
-        {list.map(( item, index ) => (
-          <button 
-            className='navigation-item' 
-            key={ index }
+      {favoriteGames.length ? favoriteGames.map(( game, index ) => (
+        <div 
+          id='list-favorites'
+          data-navigation-index="1" 
+          data-orientation="horizontal" 
+          data-up-container="list-recents"
+          data-down-container="list-favorites"
+          data-left-container="list-quick-start"
+          data-right-container="list-favorites"
+          className={`${styles.listFavorites} navigation-container horizontal`}
+        >
+          <CardGame 
+            key={index}
+            game={game}
           >
-            <span className={`${styles.nameLabel}`}>{ item.name }</span>
+            <span className={`${styles.nameLabel}`}>{ game.name }</span>
             <Disc className={`${styles.bgIcon}`}/>
             <span className={styles.playLabel}>
               <Play weight='bold'/>
               Iniciar
             </span>
-          </button>
-        ))}
-      </div>
+          </CardGame>
+        </div>
+      )) : (
+        <p>Seus jogos marcados como favoritos aparecerão aqui.</p>
+      )}
     </>
   )
 }

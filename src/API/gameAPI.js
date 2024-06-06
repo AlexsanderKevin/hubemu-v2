@@ -48,6 +48,15 @@ export const findAllGames = async () => {
   catch (err) { console.error(err) }
 }
 
+export const findFavoriteGames = async () => {
+  try {
+    let favoriteGames = await window.electron.invoke('findFavoriteGames')
+    favoriteGames = favoriteGames.map(game => game?.dataValues)
+    return favoriteGames
+  }
+  catch (err) { console.error(err) }
+}
+
 export const saveGames = async (newGames) => {
   try {
     const games = await window.electron.invoke('saveGames', newGames)
