@@ -6,7 +6,9 @@ export default function CardGame({ game, children, ...props }) {
   const [ provisionalBg, setProvisionalBg ] = useState('')
   const { 
     setOpenModalSetEmulator, 
+    setOpenModalGameOptions, 
     setGameId, 
+    setGameName,
     setEmulatorId,
     setOpenModalSetDirOfEmulator,
   } = useContext(ModalContext)
@@ -42,12 +44,22 @@ export default function CardGame({ game, children, ...props }) {
     }
   }
 
+  const handleContextMenu = (event) => {
+    event.preventDefault()
+    setOpenModalGameOptions(true)
+    setGameId(game.id)
+    setGameName(game.nameClean)
+  }
+
   return (
     <button 
       className='navigation-item' 
       onClick={event => handleClick(event)} 
+      onContextMenu={handleContextMenu}
       style={{
         backgroundImage: 'url(' + (game.backgroundImgUrl ? game.backgroundImgUrl : provisionalBg) + ')',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
       }}
       {...props}
     >

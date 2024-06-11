@@ -11,6 +11,7 @@ import { ModalProvider } from './context/ModalContext'
 import { GlobalPrivider } from './context/GlobalContext'
 import ModalSetEmulator from './components/Modal/ModalSetEmulator/ModalSetEmulator'
 import ModalSetDirOfEmulator from './components/Modal/ModalSetDirOfEmulator/ModalSetDirOfEmulator'
+import ModalGameOptions from './components/Modal/ModalOptionsGame/ModalGameOptions'
 
 function App() {
   const sendRequest = async event => {
@@ -35,6 +36,7 @@ function App() {
           <Menu/>
           <ModalSetEmulator/>
           <ModalSetDirOfEmulator/>
+          <ModalGameOptions/>
           <AnimatedBackground/>
           <div className='mainContainer'>
             <Routes>

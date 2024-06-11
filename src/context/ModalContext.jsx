@@ -6,7 +6,9 @@ export const ModalProvider = ({children}) => {
   const [ openModalSetEmulator, setOpenModalSetEmulator ] = useState(false)
   const [ openModalAddEmulator, setOpenModalAddEmulator ] = useState(false)
   const [ openModalSetDirOfEmulator, setOpenModalSetDirOfEmulator ] = useState(false)
+  const [ openModalGameOptions, setOpenModalGameOptions ] = useState(false)
   const [ gameId, setGameId ] = useState(null)
+  const [ gameName, setGameName ] = useState(null)
   const [ emulatorId, setEmulatorId ] = useState(null)
 
   return (
@@ -14,7 +16,9 @@ export const ModalProvider = ({children}) => {
       openModalSetEmulator, setOpenModalSetEmulator,
       openModalAddEmulator, setOpenModalAddEmulator,
       openModalSetDirOfEmulator, setOpenModalSetDirOfEmulator,
+      openModalGameOptions, setOpenModalGameOptions,
       gameId, setGameId,
+      gameName, setGameName,
       emulatorId, setEmulatorId,
     }}>
       {children}
