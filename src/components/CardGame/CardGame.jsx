@@ -7,6 +7,7 @@ export default function CardGame({ game, children, ...props }) {
   const { 
     setOpenModalSetEmulator, 
     setOpenModalGameOptions, 
+    setGame,
     setGameId, 
     setGameName,
     setEmulatorId,
@@ -47,8 +48,7 @@ export default function CardGame({ game, children, ...props }) {
   const handleContextMenu = (event) => {
     event.preventDefault()
     setOpenModalGameOptions(true)
-    setGameId(game.id)
-    setGameName(game.nameClean)
+    setGame(game)
   }
 
   return (

@@ -115,6 +115,32 @@ const gameController = {
       catch (err) {
         throw new Error('Error at setting game emulator: ' + err.message)
       }
+  },
+
+  setGameFavorite: async (event, data) => {
+    const { id, isFavorited } = data
+
+    try {
+      await GameModel.update({ isFavorited }, { where: { id } })
+      .then(result => {
+        if ( result[0] === 1 ) console.log('Game favorited')
+        else console.error('Game not found or not favorited')
+      })
+    }
+    catch (err) {
+      throw new Error('Error at favoriting game: ' + err.message)
+    }
+  },
+
+  deleteGame: async (event, data) => {
+    const { id } = data
+
+    try {
+      await GameModel.destroy({ where: { id } })
+    }
+    catch (err) {
+      throw new Error('Error at deleting game: ' + err.message)
+    }
   }
   
 }

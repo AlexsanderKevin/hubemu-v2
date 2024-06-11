@@ -1,38 +1,43 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ModalContext } from '../../../context/ModalContext'
 import Modal from '../Modal'
 import styles from './ModalGameOptions.module.css'
 import { Star, Trash } from '@phosphor-icons/react'
+import { deleteGame, setGameFavorite } from '../../../API/gameAPI'
+import { GlobalContext } from '../../../context/GlobalContext'
 
 export default function ModalGameOptions () {
   const {
     openModalGameOptions,
     setOpenModalGameOptions,
-    gameName,
-    setGameName,
-    gameId,
-    setGameId,
+    game,
+    setGame,
   } = useContext(ModalContext)
+  const { setUpdatedGames } = useContext(GlobalContext)
 
   const handleClose = () => {
     setOpenModalGameOptions(false)
-    setGameId(null)
-    setGameName(null)
+    setGame(null)
   }
 
-  const handleFavorite = (event) => {
+  const handleFavorite = async (event) => {
     event.preventDefault()
-    console.log('favorite')
+    const isFavorite = !game?.isFavorited
+    await setGameFavorite(game?.id, isFavorite)
+    setUpdatedGames(state => !state)
+    handleClose()
   }
 
-  const handleDelete = (event) => {
+  const handleDelete = async (event) => {
     event.preventDefault()
-    console.log('delete')
+    await deleteGame(game?.id)
+    setUpdatedGames(state => !state)
+    handleClose()
   }
 
   return (
     <Modal
-      header={gameName}
+      header={game?.nameClean}
       modalOpenState={openModalGameOptions}
       labelCancelButton='Fechar'
       onClose={handleClose}
@@ -44,8 +49,10 @@ export default function ModalGameOptions () {
           className={`navigation-item`}
           onClick={handleFavorite}
         >
-          <Star weight='bold'/>
-          Favoritar
+          <Star 
+            weight={game?.isFavorited ? 'fill' : 'bold'}
+          />
+          {game?.isFavorited ? 'Desfavoritar' : 'Favoritar'}
         </button>
         <button 
           className={`${styles.buttonDelete} navigation-item`}

@@ -9,6 +9,8 @@ const initGameRoutes = () => {
   ipcMain.handle('saveGames', gameController.saveGames)
   ipcMain.handle('setGameMetadata', gameController.setGameMetadata)
   ipcMain.handle('setGameEmulator', gameController.setGameEmulator)
+  ipcMain.handle('setGameFavorite', gameController.setGameFavorite)
+  ipcMain.handle('deleteGame', gameController.deleteGame)
 }
 
 module.exports = { initGameRoutes }

@@ -77,3 +77,13 @@ export const setGameEmulator = async (gameId, emulatorId) => {
   try { await window.electron.invoke('setGameEmulator', { gameId, emulatorId }) }
   catch (err) { console.error(err) }
 }
+
+export const setGameFavorite = async (gameId, isFavorited) => {
+  try { await window.electron.invoke('setGameFavorite', { id: gameId, isFavorited })}
+  catch (err) { console.error(err) }
+}
+
+export const deleteGame = async (gameId) => {
+  try { await window.electron.invoke('deleteGame', { id: gameId })}
+  catch (err) { console.error(err) }
+}

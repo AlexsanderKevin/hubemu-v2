@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Sparkle, Play, Disc } from '@phosphor-icons/react'
 import homeStyles from './Home.module.css'
 import styles from './ListFavorites.module.css'
 import { findFavoriteGames } from '../../API/gameAPI';
 import CardGame from '../../components/CardGame/CardGame';
+import { GlobalContext } from '../../context/GlobalContext';
 
 export default function ListFavorites () {
+  const { updatedGames } = useContext(GlobalContext)
   const [ favoriteGames, setFavoriteGames ] = useState([])
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function ListFavorites () {
       console.log('favorited: ', games)
     }
     fetchFavoriteGames()
-  }, [])
+  }, [ updatedGames ])
 
   return (
     <>
