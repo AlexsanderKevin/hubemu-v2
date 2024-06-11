@@ -54,7 +54,7 @@ export default function EmulatorList() {
         data-up-container="navigation-menu"
         data-down-container="list-quick-start"
         data-left-container="list-quick-start"
-        data-right-container="list-favorites"
+        data-right-container="container-2"
       >
 
         {emulators.map(( emulator, index ) => (

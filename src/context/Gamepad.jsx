@@ -10,7 +10,7 @@ export const GamepadProvider = ({children}) => {
   const [ maxItems, setMaxItems ] = useState(0)
   const [ gameLoopOn, setGameLoopOn ] = useState(true)
   const [ gameLoopInterval, setGameLoopInterval ] = useState(null)
-  const [ currentContainerElementId, setCurrentContainerElementId ] = useState("#list-recents")
+  const [ currentContainerElementId, setCurrentContainerElementId ] = useState("#container-1")
 
   const handleGamepadConnected = event => {
     setConnectedGamepad(event.gamepad)

@@ -12,13 +12,13 @@ export default function ListRecents ({ allGames }) {
         Recentes
       </h1>
       <div 
-        id='list-recents'
+        id='container-1'
         data-navigation-index="0" 
         data-orientation="horizontal" 
-        data-up-container="list-recents"
-        data-down-container="list-favorites"
+        data-up-container="container-1"
+        data-down-container="container-2"
         data-left-container="navigation-menu"
-        data-right-container="list-recents"
+        data-right-container="container-1"
         className={`${styles.listRecents} navigation-container horizontal`}
       >
         {allGames.map(( item, index ) => (

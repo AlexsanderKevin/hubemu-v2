@@ -26,13 +26,13 @@ export default function ListFavorites () {
         Favoritos
       </h1>
       <div 
-        id='list-favorites'
+        id='container-2'
         data-navigation-index="1" 
         data-orientation="horizontal" 
-        data-up-container="list-recents"
-        data-down-container="list-favorites"
+        data-up-container="container-1"
+        data-down-container="container-2"
         data-left-container="list-quick-start"
-        data-right-container="list-favorites"
+        data-right-container="container-2"
         className={`${styles.listFavorites} navigation-container horizontal`}
       >
 
@@ -40,12 +40,12 @@ export default function ListFavorites () {
           <CardGame 
             key={index}
             game={game}
+            classNames={`navigation-item`}
           >
             <div className={`${styles.nameLabel}`}>
               <span >{ game.nameClean }</span>
             </div>
 
-            <Disc className={`${styles.bgIcon}`}/>
             <span className={ styles.playLabel }>
               <Play weight='fill'/>
               Iniciar

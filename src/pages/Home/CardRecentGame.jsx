@@ -12,7 +12,6 @@ export default function CardRecentGame({ game, ...props }) {
         <span >{ game.nameClean }</span>
       </div>
 
-      <Disc className={`${styles.bgIcon}`}/>
       <span className={ styles.playLabel }>
         <Play weight='fill'/>
         Iniciar

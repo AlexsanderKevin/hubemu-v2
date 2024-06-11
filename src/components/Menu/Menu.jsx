@@ -17,7 +17,7 @@ export default function Menu() {
           data-up-container="navigation-menu"
           data-down-container="list-quick-start"
           data-left-container="navigation-menu"
-          data-right-container="list-recents"
+          data-right-container="container-1"
         >
           <NavLink 
             className={`${styles.navLink} navigation-item`}

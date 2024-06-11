@@ -16,8 +16,8 @@ export default function Library () {
       const games = await findAllGames()
       let matrix = []
 
-      for (let i = 0; i < games.length; i+=4) {
-        matrix.push(games.slice(i, i+ + 4))
+      for (let i = 0; i < games.length; i+=5) {
+        matrix.push(games.slice(i, i+ + 5))
       }
 
       console.log(matrix)
@@ -35,6 +35,21 @@ export default function Library () {
         <div
           key={indexRow}
           className={styles.row}
+          id={'container-' + (indexRow + 1)}
+          data-navigation-index={indexRow.toString()} 
+          data-orientation="horizontal" 
+          data-left-container="navigation-menu"
+          data-right-container={"container-" + (indexRow + 1)}
+          data-up-container={
+            indexRow === 0 
+            ? "container-" + (indexRow + 1) 
+            : "container-" + indexRow 
+          }
+          data-down-container={
+            gameMatrix.length > (indexRow + 1)
+            ? "container-" + (indexRow + 2)
+            : "container-" + (indexRow + 1)
+          }
         >
           {row.map((game, indexGame) => (
             <CardGame
@@ -45,7 +60,6 @@ export default function Library () {
                 <span >{ game.nameClean }</span>
               </div>
 
-              <Disc className={`${styles.bgIcon}`}/>
               <span className={ styles.playLabel }>
                 <Play weight='fill'/>
                 Iniciar

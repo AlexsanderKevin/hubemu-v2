@@ -52,7 +52,7 @@ button:focus .playLabel {
   height: 15rem;
   min-width: 15rem;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 1.3rem;
+  border-radius: .7rem;
   transition: .2s;
   position: relative;
   overflow: hidden;
@@ -91,7 +91,7 @@ button:focus .playLabel {
   background-color: #1e1b4bc8;
   text-wrap: nowrap;
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: start;
   text-overflow: ellipsis;
   position: absolute;
@@ -105,12 +105,15 @@ button:focus .playLabel {
   text-overflow: ellipsis;
 }
 
-button:focus .playLabel {
+button:focus .playLabel,
+button:focus .nameLabel
+{
   display: flex;
 }
 
-.listRecents button:focus {
+.listFavorites button:focus {
   /* min-width: 22rem; */
+  scale: 1.1;
   background-size: 30rem;
 }
 

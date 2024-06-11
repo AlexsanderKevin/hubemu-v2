@@ -1,5 +1,9 @@
 .library {
-  margin-left: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  height: 94.5dvh;
+  overflow: hidden;
+  padding-top: 3.5rem;
 }
 
 .row {
@@ -9,10 +13,10 @@
 }
 
 .row button {
-  height: 20rem;
-  min-width: 17rem;
+  height: 18rem;
+  min-width: 15rem;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 1.3rem;
+  border-radius: .7rem;
   transition: .2s;
   position: relative;
   overflow: hidden;
@@ -51,7 +55,7 @@
   background-color: #1e1b4bc8;
   text-wrap: nowrap;
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: start;
   text-overflow: ellipsis;
 }
@@ -60,14 +64,17 @@
   width: 20px;
   text-align: left;
   text-overflow: ellipsis;
+  font-size: 1rem;
 }
 
-button:focus .playLabel {
+button:focus .playLabel,
+button:focus .nameLabel {
   display: flex;
 }
 
-.listRecents button:focus  {
+.library button:focus  {
   background-size: 30rem;
+  scale: 1.1;
 }
 
 .bgIcon {

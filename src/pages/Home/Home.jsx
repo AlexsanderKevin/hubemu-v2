@@ -21,7 +21,7 @@ export default function Home () {
     }
     fetchGames()
 
-    jumpTo('#list-recents', 0)
+    jumpTo('#container-1', 0)
   }, [ updatedGames, updatedEmulators ])
 
   return (
