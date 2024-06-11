@@ -25,33 +25,36 @@ export default function ListFavorites () {
         <Sparkle/>
         Favoritos
       </h1>
+      <div 
+        id='list-favorites'
+        data-navigation-index="1" 
+        data-orientation="horizontal" 
+        data-up-container="list-recents"
+        data-down-container="list-favorites"
+        data-left-container="list-quick-start"
+        data-right-container="list-favorites"
+        className={`${styles.listFavorites} navigation-container horizontal`}
+      >
 
-      {favoriteGames.length ? favoriteGames.map(( game, index ) => (
-        <div 
-          id='list-favorites'
-          data-navigation-index="1" 
-          data-orientation="horizontal" 
-          data-up-container="list-recents"
-          data-down-container="list-favorites"
-          data-left-container="list-quick-start"
-          data-right-container="list-favorites"
-          className={`${styles.listFavorites} navigation-container horizontal`}
-        >
+        {favoriteGames.length ? favoriteGames.map(( game, index ) => (
           <CardGame 
             key={index}
             game={game}
           >
-            <span className={`${styles.nameLabel}`}>{ game.name }</span>
+            <div className={`${styles.nameLabel}`}>
+              <span >{ game.nameClean }</span>
+            </div>
+
             <Disc className={`${styles.bgIcon}`}/>
-            <span className={styles.playLabel}>
-              <Play weight='bold'/>
+            <span className={ styles.playLabel }>
+              <Play weight='fill'/>
               Iniciar
             </span>
           </CardGame>
-        </div>
-      )) : (
-        <p>Seus jogos marcados como favoritos aparecerão aqui.</p>
-      )}
+        )) : (
+          <p className={styles.labelNoFavorites}>Seus jogos marcados como favoritos aparecerão aqui.</p>
+        )}
+      </div>
     </>
   )
 }

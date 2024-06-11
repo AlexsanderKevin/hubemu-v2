@@ -32,7 +32,6 @@
   gap: .5rem;
   font-size: 1.2rem;
   background-color: #4ADE80;
-  /* background-color: #1E1B4B; */
   padding: .5rem 1rem;
   border-radius: 50px;
   justify-content: center;
@@ -40,13 +39,9 @@
   font-size: 1rem;
   color: #052814;
   box-shadow: 0px 0px 20px hsla(0, 0%, 0%, 0.5);
-  /* border: 2px solid #12A150; */
 }
 
 .nameLabel {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   font-size: 1.1rem;
   padding: .7rem 1rem;
   background-color: #1e1b4bc8;
